@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neuraxine — AI Automation Agency | WhatsApp, Voice & Lead Automation</title>
+<meta name="description" content="Neuraxine builds AI automation systems for Indian businesses — WhatsApp automation, AI voice calling, chatbots, lead generation and CRM. Try the live AI demos now.">
+<meta property="og:title" content="Neuraxine — Automate Your Business with AI">
+<meta property="og:description" content="Experience live AI automation: chatbot, voice agent, WhatsApp flows, lead generation. Book a free demo.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050607;
+  --bg2:#0a0c0e;
+  --panel:#0d1012;
+  --glass:rgba(255,255,255,.04);
+  --glass2:rgba(255,255,255,.07);
+  --stroke:rgba(255,255,255,.09);
+  --stroke-lime:rgba(198,255,0,.35);
+  --lime:#C6FF00;
+  --lime-dim:rgba(198,255,0,.12);
+  --lime-glow:rgba(198,255,0,.22);
+  --silver:#aeb6bd;
+  --silver-dim:#6e757b;
+  --white:#f4f6f5;
+  --wa:#25D366;
+  --r-lg:22px;
+  --r-md:16px;
+  --r-sm:10px;
+  --display:'Unbounded',sans-serif;
+  --body:'Space Grotesk',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--lime);color:#000}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--body);cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:var(--body);font-size:15px;color:var(--white);background:rgba(255,255,255,.04);border:1px solid var(--stroke);border-radius:var(--r-sm);padding:13px 16px;width:100%;outline:none;transition:border-color .25s, box-shadow .25s}
+input:focus,select:focus,textarea:focus{border-color:var(--stroke-lime);box-shadow:0 0 0 3px rgba(198,255,0,.08)}
+input::placeholder,textarea::placeholder{color:var(--silver-dim)}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aeb6bd' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+select option{background:#0d1012;color:var(--white)}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{position:relative;padding:110px 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.18}
+h2{font-size:clamp(26px,4vw,42px);letter-spacing:-.01em;margin-bottom:16px}
+.sub{color:var(--silver);max-width:620px;font-size:17px;font-weight:300}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:15px;padding:15px 28px;border-radius:999px;transition:transform .25s, box-shadow .25s, background .25s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-lime{background:var(--lime);color:#0a0c00;box-shadow:0 0 0 0 var(--lime-glow), 0 8px 30px rgba(198,255,0,.18)}
+.btn-lime:hover{box-shadow:0 0 0 5px var(--lime-dim), 0 12px 40px rgba(198,255,0,.3);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--stroke);color:var(--white);background:rgba(255,255,255,.03);backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--stroke-lime);background:var(--lime-dim);transform:translateY(-2px)}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s, border-color .3s, backdrop-filter .3s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(5,6,7,.72);backdrop-filter:blur(18px);border-bottom-color:var(--stroke)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1180px;margin:0 auto;padding:0 24px}
+.logo{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.04em;display:flex;align-items:center;gap:9px}
+.logo .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime);animation:pulse 2.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 6px var(--lime)}50%{box-shadow:0 0 18px var(--lime)}}
+.nav-links{display:flex;gap:32px;font-size:14.5px;color:var(--silver)}
+.nav-links a{transition:color .2s}
+.nav-links a:hover{color:var(--lime)}
+.nav-cta{padding:11px 22px;font-size:14px}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px}
+.burger span{width:22px;height:1.6px;background:var(--white);transition:.3s}
+.mobile-menu{display:none;position:fixed;inset:72px 0 auto 0;background:rgba(5,6,7,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--stroke);z-index:99;padding:24px;flex-direction:column;gap:18px;font-size:17px}
+.mobile-menu.open{display:flex}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;overflow:hidden}
+#bg3d{position:absolute;inset:0;z-index:0}
+.hero-grid-lines{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 75%)}
+.hero-glow{position:absolute;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(198,255,0,.10),transparent 62%);top:-180px;right:-160px;z-index:0;filter:blur(8px)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--silver);border:1px solid var(--stroke);background:var(--glass);backdrop-filter:blur(10px);padding:9px 16px;border-radius:999px;margin-bottom:26px}
+.hero-badge i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2s infinite}
+h1{font-size:clamp(34px,5.6vw,62px);letter-spacing:-.015em;margin-bottom:22px}
+h1 .lime{color:var(--lime);text-shadow:0 0 40px rgba(198,255,0,.35)}
+.hero p{color:var(--silver);font-size:18px;font-weight:300;max-width:520px;margin-bottom:36px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.hero-meta{display:flex;gap:36px;flex-wrap:wrap}
+.hero-meta div{font-family:var(--mono);font-size:12px;color:var(--silver-dim);letter-spacing:.08em}
+.hero-meta b{display:block;font-family:var(--display);font-size:22px;font-weight:500;color:var(--white);letter-spacing:0;margin-bottom:3px}
+.hero-meta b em{color:var(--lime);font-style:normal}
+.hero-visual{position:relative;height:520px}
+#core3d{width:100%;height:100%}
+.hero-chip{position:absolute;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--silver);background:rgba(13,16,18,.7);backdrop-filter:blur(12px);border:1px solid var(--stroke);border-radius:12px;padding:11px 15px;display:flex;align-items:center;gap:9px;animation:float 6s ease-in-out infinite}
+.hero-chip i{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.chip-1{top:8%;left:0;animation-delay:0s}
+.chip-2{top:42%;right:-2%;animation-delay:1.4s}
+.chip-3{bottom:7%;left:12%;animation-delay:2.8s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* ---------- demo zone ---------- */
+#demos{background:linear-gradient(180deg,var(--bg) 0%, var(--bg2) 18%, var(--bg2) 82%, var(--bg) 100%)}
+.console{margin-top:48px;border:1px solid var(--stroke);border-radius:var(--r-lg);background:rgba(13,16,18,.55);backdrop-filter:blur(20px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.console-bar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--stroke);font-family:var(--mono);font-size:11.5px;color:var(--silver-dim);letter-spacing:.1em}
+.console-bar .lights{display:flex;gap:6px;margin-right:8px}
+.console-bar .lights i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.12)}
+.console-bar .lights i:first-child{background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.console-bar .live{margin-left:auto;color:var(--lime);display:flex;align-items:center;gap:7px}
+.console-bar .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 1.6s infinite}
+.tabs{display:flex;gap:6px;padding:14px 16px;border-bottom:1px solid var(--stroke);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;font-size:13.5px;font-weight:500;color:var(--silver);padding:10px 18px;border-radius:999px;border:1px solid transparent;transition:.25s}
+.tab:hover{color:var(--white);background:var(--glass)}
+.tab.active{color:#0a0c00;background:var(--lime);font-weight:600;box-shadow:0 4px 20px rgba(198,255,0,.25)}
+.panel{display:none;padding:34px;min-height:480px}
+.panel.active{display:grid;grid-template-columns:340px 1fr;gap:38px;animation:panelIn .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.panel-info h3{font-size:21px;margin-bottom:14px}
+.panel-info p{color:var(--silver);font-size:15px;font-weight:300;margin-bottom:22px}
+.panel-info ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.panel-info li{font-size:14px;color:var(--silver);display:flex;gap:10px;align-items:flex-start}
+.panel-info li::before{content:"";flex-shrink:0;width:14px;height:14px;margin-top:4px;border-radius:50%;background:var(--lime-dim);border:1px solid var(--stroke-lime);box-shadow:inset 0 0 6px rgba(198,255,0,.4)}
+.panel-stage{border:1px solid var(--stroke);border-radius:var(--r-md);background:rgba(5,6,7,.6);overflow:hidden;display:flex;flex-direction:column;min-height:430px}
+
+/* chat */
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--stroke);background:var(--glass)}
+.avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--lime),#5a7a00);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:13px;font-weight:600;color:#0a0c00;box-shadow:0 0 16px rgba(198,255,0,.3)}
+.chat-head .nm{font-size:14.5px;font-weight:500}
+.chat-head .st{font-family:var(--mono);font-size:11px;color:var(--lime)}
+.chat-body{flex:1;padding:18px;overflow-y:auto;display:flex;flex-direction:column;gap:11px;scroll-behavior:smooth}
+.chat-body::-webkit-scrollbar{width:5px}
+.chat-body::-webkit-scrollbar-thumb{background:var(--stroke);border-radius:99px}
+.msg{max-width:78%;padding:11px 15px;border-radius:16px;font-size:14px;line-height:1.5;animation:msgIn .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+.msg.bot{align-self:flex-start;background:var(--glass2);border:1px solid var(--stroke);border-bottom-left-radius:5px;color:#dfe4e2}
+.msg.user{align-self:flex-end;background:var(--lime);color:#0a0c00;border-bottom-right-radius:5px;font-weight:500}
+.msg.wa-bot{align-self:flex-start;background:#1f2c34;border-bottom-left-radius:5px;color:#e7ece9}
+.msg.wa-user{align-self:flex-end;background:#005c4b;color:#e7ece9;border-bottom-right-radius:5px}
+.typing{align-self:flex-start;display:flex;gap:5px;padding:13px 16px;background:var(--glass2);border:1px solid var(--stroke);border-radius:16px;border-bottom-left-radius:5px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--silver);animation:tp 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.quick{display:flex;gap:8px;flex-wrap:wrap;padding:0 18px 12px}
+.quick button{font-size:12.5px;color:var(--lime);border:1px solid var(--stroke-lime);background:var(--lime-dim);padding:7px 14px;border-radius:999px;transition:.2s}
+.quick button:hover{background:var(--lime);color:#0a0c00}
+.chat-input{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--stroke)}
+.chat-input input{flex:1}
+.send{flex-shrink:0;width:46px;height:46px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;transition:.25s;box-shadow:0 4px 16px rgba(198,255,0,.25)}
+.send:hover{transform:scale(1.07)}
+.send svg{width:18px;height:18px;stroke:#0a0c00}
+
+/* voice */
+.voice-stage{align-items:center;justify-content:center;padding:30px;gap:24px}
+.mic-ring{position:relative;width:148px;height:148px;display:flex;align-items:center;justify-content:center;margin:10px auto}
+.mic-ring::before,.mic-ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--stroke-lime)}
+.mic-ring.on::before{animation:ring 2s infinite}
+.mic-ring.on::after{animation:ring 2s infinite 1s}
+@keyframes ring{from{transform:scale(1);opacity:.7}to{transform:scale(1.55);opacity:0}}
+.mic-btn{width:108px;height:108px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #d9ff4d, var(--lime) 60%);box-shadow:0 0 50px rgba(198,255,0,.4), inset 0 2px 10px rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;transition:transform .25s}
+.mic-btn:hover{transform:scale(1.05)}
+.mic-btn svg{width:38px;height:38px;stroke:#0a0c00;fill:none;stroke-width:1.8}
+.eq{display:flex;gap:4px;height:34px;align-items:center;justify-content:center;margin:6px 0}
+.eq i{width:4px;border-radius:99px;background:var(--lime);height:8px;box-shadow:0 0 8px rgba(198,255,0,.5);transition:height .15s}
+.voice-transcript{flex:1;width:100%;max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:9px;font-size:14px;overflow-y:auto;max-height:190px;padding:4px}
+.vt-line{display:flex;gap:10px;animation:msgIn .4s}
+.vt-line b{flex-shrink:0;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding-top:3px}
+.vt-line.ai b{color:var(--lime)}
+.vt-line.hu b{color:var(--silver-dim)}
+.vt-line span{color:#d6dbd9;font-weight:300}
+.voice-hint{font-family:var(--mono);font-size:11.5px;color:var(--silver-dim);text-align:center;letter-spacing:.06em}
+
+/* forms in demos */
+.demo-form{padding:30px;display:flex;flex-direction:column;gap:15px;justify-content:center}
+.demo-form label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--silver-dim);margin-bottom:-7px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.success-state{display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:50px 30px;text-align:center;flex:1}
+.success-state.show{display:flex;animation:panelIn .5s}
+.success-icon{width:74px;height:74px;border-radius:50%;background:var(--lime-dim);border:1px solid var(--stroke-lime);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(198,255,0,.2)}
+.success-icon svg{width:32px;height:32px;stroke:var(--lime);stroke-width:2;fill:none}
+.success-state h4{font-family:var(--display);font-weight:500;font-size:19px}
+.success-state p{color:var(--silver);font-size:14.5px;max-width:380px;font-weight:300}
+
+/* lead pipeline */
+.pipeline{display:none;flex-direction:column;gap:0;padding:34px 30px;flex:1;justify-content:center}
+.pipeline.show{display:flex}
+.pl-step{display:flex;gap:18px;opacity:.25;transition:opacity .5s}
+.pl-step.on{opacity:1}
+.pl-rail{display:flex;flex-direction:column;align-items:center}
+.pl-dot{width:34px;height:34px;border-radius:50%;border:1px solid var(--stroke);background:var(--panel);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--silver-dim);flex-shrink:0;transition:.4s}
+.pl-step.on .pl-dot{border-color:var(--lime);color:var(--lime);box-shadow:0 0 18px rgba(198,255,0,.35)}
+.pl-line{width:1px;flex:1;min-height:26px;background:var(--stroke)}
+.pl-step.on .pl-line{background:linear-gradient(var(--lime),var(--stroke))}
+.pl-body{padding-bottom:24px}
+.pl-body b{font-size:15px;display:block;margin-bottom:3px}
+.pl-body span{font-size:13.5px;color:var(--silver);font-weight:300}
+.pl-body .tag{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:10.5px;color:var(--lime);border:1px solid var(--stroke-lime);background:var(--lime-dim);padding:2px 9px;border-radius:99px}
+
+/* whatsapp phone */
+.phone-wrap{display:flex;align-items:center;justify-content:center;padding:26px;flex:1}
+.phone{width:300px;height:560px;max-height:62vh;border-radius:36px;border:1px solid rgba(255,255,255,.14);background:#0b141a;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 0 0 6px #000;position:relative}
+.phone-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:88px;height:18px;background:#000;border-radius:99px;z-index:3}
+.wa-head{background:#1f2c34;padding:30px 14px 11px;display:flex;align-items:center;gap:10px}
+.wa-head .avatar{width:32px;height:32px;font-size:11px}
+.wa-head .nm{font-size:13.5px;font-weight:500}
+.wa-head .st{font-size:10.5px;color:#8aa0ab;font-family:var(--mono)}
+.wa-body{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:8px;background:#0b141a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' opacity='0.04'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='white'/%3E%3Ccircle cx='60' cy='60' r='1.5' fill='white'/%3E%3C/svg%3E")}
+.wa-body::-webkit-scrollbar{display:none}
+.wa-body .msg{font-size:12.8px;max-width:84%;padding:8px 11px;border-radius:10px}
+.wa-btns{align-self:flex-start;display:flex;flex-direction:column;gap:6px;width:84%}
+.wa-btns button{background:#1f2c34;color:#53bdeb;font-size:12.5px;padding:9px;border-radius:8px;text-align:center;transition:.2s}
+.wa-btns button:hover{background:#27353f}
+.wa-foot{padding:10px;background:#1f2c34;font-family:var(--mono);font-size:10.5px;color:#8aa0ab;text-align:center;letter-spacing:.06em}
+
+/* funnel */
+.funnel{display:flex;flex-direction:column;gap:14px;padding:34px 38px;flex:1;justify-content:center}
+.fn-stage{position:relative;border:1px solid var(--stroke);border-radius:var(--r-sm);background:var(--glass);padding:15px 18px;display:flex;align-items:center;gap:14px;opacity:.3;transform:translateX(-10px);transition:.5s}
+.fn-stage.on{opacity:1;transform:none;border-color:var(--stroke-lime);box-shadow:0 0 24px rgba(198,255,0,.07)}
+.fn-stage .num{font-family:var(--display);font-size:20px;color:var(--lime);min-width:64px;font-weight:500}
+.fn-stage b{display:block;font-size:14.5px}
+.fn-stage span{font-size:12.5px;color:var(--silver);font-weight:300}
+.fn-arrow{align-self:center;color:var(--silver-dim);font-size:14px;line-height:1;opacity:.5}
+.fn-bar{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--lime-dim);border-radius:var(--r-sm);transition:width 1s cubic-bezier(.2,.7,.2,1);z-index:0}
+.fn-stage>*{position:relative;z-index:1}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.svc{position:relative;border:1px solid var(--stroke);border-radius:var(--r-md);background:var(--glass);backdrop-filter:blur(14px);padding:30px 26px;transition:transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s;overflow:hidden}
+.svc::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(198,255,0,.07), transparent 45%);opacity:0;transition:opacity .35s;pointer-events:none}
+.svc:hover{transform:translateY(-5px);border-color:var(--stroke-lime);box-shadow:0 18px 50px rgba(0,0,0,.45), 0 0 30px rgba(198,255,0,.06)}
+.svc:hover::before{opacity:1}
+.svc .ic{width:48px;height:48px;border-radius:13px;background:var(--lime-dim);border:1px solid var(--stroke-lime);display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:inset 0 0 18px rgba(198,255,0,.12)}
+.svc .ic svg{width:22px;height:22px;stroke:var(--lime);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:16.5px;font-weight:500;margin-bottom:9px}
+.svc p{font-size:14px;color:var(--silver);font-weight:300}
+
+/* ---------- process ---------- */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px}
+.step{position:relative;padding-top:26px}
+.step::before{content:"";position:absolute;top:9px;left:0;right:-18px;height:1px;background:var(--stroke)}
+.step:last-child::before{right:0}
+.step::after{content:"";position:absolute;top:5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--lime);letter-spacing:.18em;margin-bottom:12px}
+.step h3{font-size:17px;font-weight:500;margin-bottom:9px}
+.step p{font-size:14px;color:var(--silver);font-weight:300}
+
+/* ---------- results ---------- */
+#results{background:var(--bg2)}
+.res-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px}
+.res{border:1px solid var(--stroke);border-radius:var(--r-md);background:var(--glass);backdrop-filter:blur(12px);padding:28px 20px;text-align:center;transition:.3s}
+.res:hover{border-color:var(--stroke-lime);transform:translateY(-4px)}
+.res b{display:block;font-family:var(--display);font-size:30px;font-weight:500;color:var(--lime);text-shadow:0 0 24px rgba(198,255,0,.3);margin-bottom:8px}
+.res span{font-size:13px;color:var(--silver);font-weight:300;line-height:1.4;display:block}
+
+/* ---------- pricing ---------- */
+.price-panel{margin-top:48px;border:1px solid var(--stroke);border-radius:var(--r-lg);background:linear-gradient(135deg, rgba(198,255,0,.06), rgba(255,255,255,.02) 40%);backdrop-filter:blur(16px);padding:54px 48px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.price-panel::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle, rgba(198,255,0,.12), transparent 65%);top:-160px;right:-100px}
+.price-panel h3{font-size:clamp(22px,3vw,30px);margin-bottom:16px}
+.price-panel p{color:var(--silver);font-weight:300;font-size:16px;margin-bottom:0}
+.price-list{display:flex;flex-direction:column;gap:13px;position:relative}
+.price-list div{display:flex;justify-content:space-between;gap:14px;font-size:14.5px;border-bottom:1px solid var(--stroke);padding-bottom:13px}
+.price-list div span:first-child{color:var(--silver)}
+.price-list div span:last-child{font-family:var(--mono);font-size:12.5px;color:var(--lime)}
+.price-cta{margin-top:10px}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;margin-top:48px;align-items:start}
+.contact-info ul{list-style:none;display:flex;flex-direction:column;gap:20px;margin-top:28px}
+.contact-info li{display:flex;gap:16px;align-items:flex-start}
+.contact-info li .ic{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:var(--lime-dim);border:1px solid var(--stroke-lime);display:flex;align-items:center;justify-content:center}
+.contact-info li .ic svg{width:19px;height:19px;stroke:var(--lime);fill:none;stroke-width:1.6}
+.contact-info li b{display:block;font-size:15px;margin-bottom:2px}
+.contact-info li span{font-size:13.5px;color:var(--silver);font-weight:300}
+.contact-form{border:1px solid var(--stroke);border-radius:var(--r-lg);background:var(--glass);backdrop-filter:blur(16px);padding:36px;display:flex;flex-direction:column;gap:16px}
+.contact-form label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--silver-dim);margin-bottom:-9px}
+textarea{resize:vertical;min-height:96px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--stroke);background:var(--bg2);padding:64px 0 32px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:48px}
+.foot-grid h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--silver-dim);margin-bottom:18px}
+.foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:11px;font-size:14px;color:var(--silver)}
+.foot-grid ul a:hover{color:var(--lime)}
+.foot-brand p{color:var(--silver);font-size:14px;font-weight:300;margin:16px 0 22px;max-width:280px}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:11px;border:1px solid var(--stroke);background:var(--glass);display:flex;align-items:center;justify-content:center;transition:.25s}
+.socials a:hover{border-color:var(--stroke-lime);background:var(--lime-dim);transform:translateY(-2px)}
+.socials svg{width:17px;height:17px;stroke:var(--silver);fill:none;stroke-width:1.6}
+.socials a:hover svg{stroke:var(--lime)}
+.foot-bottom{border-top:1px solid var(--stroke);padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--silver-dim);letter-spacing:.06em}
+
+/* ---------- floating WA ---------- */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:90;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 32px rgba(37,211,102,.4);transition:transform .25s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(37,211,102,.6);animation:ring 2.4s infinite}
+
+/* ---------- responsive ---------- */
+@media(max-width:1020px){
+  .hero .wrap{grid-template-columns:1fr;gap:20px}
+  .hero-visual{height:380px;order:-1}
+  .panel.active{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .res-grid{grid-template-columns:repeat(3,1fr)}
+  .proc{grid-template-columns:repeat(2,1fr);row-gap:40px}
+  .step::before{right:0}
+  .price-panel{grid-template-columns:1fr;padding:40px 30px}
+  .contact-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  section{padding:80px 0}
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .svc-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:repeat(2,1fr)}
+  .proc{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .panel{padding:22px}
+  .hero-chip{display:none}
+  .phone{width:270px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#top" class="logo"><span class="dot"></span>NEURAXINE</a>
+    <div class="nav-links">
+      <a href="#demos">Live Demos</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#results">Results</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a href="#contact" class="btn btn-lime nav-cta">Book Free Demo</a>
+    <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#demos">Live Demos</a>
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#results">Results</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact" class="btn btn-lime" style="justify-content:center">Book Free Demo</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div>
+      <div class="hero-badge"><i></i>AI AUTOMATION AGENCY · INDIA</div>
+      <h1>Automate Your Business with <span class="lime">Neuraxine</span></h1>
+      <p>AI-powered automation systems for WhatsApp, voice calling, lead generation, chatbots, and digital marketing — built to run your business 24/7.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-lime">Book Free Demo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#demos" class="btn btn-ghost">Try Live AI Tools</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>24<em>/7</em></b>LEAD HANDLING</div>
+        <div><b>&lt;5<em>s</em></b>RESPONSE TIME</div>
+        <div><b>100<em>%</em></b>AUTOMATED FLOWS</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <canvas id="core3d" aria-hidden="true"></canvas>
+      <div class="hero-chip chip-1"><i></i>WhatsApp · auto-reply sent</div>
+      <div class="hero-chip chip-2"><i></i>AI Call · lead qualified</div>
+      <div class="hero-chip chip-3"><i></i>CRM · lead synced</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= DEMO ZONE ================= -->
+<section id="demos">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Live Experience Zone</div>
+      <h2>Don't read about it. <span style="color:var(--lime)">Try it.</span></h2>
+      <p class="sub">Every tool below is a working demo of what Neuraxine deploys for clients. Click a tab and experience the automation yourself.</p>
+    </div>
+
+    <div class="console rv">
+      <div class="console-bar">
+        <span class="lights"><i></i><i></i><i></i></span>
+        NEURAXINE · DEMO CONSOLE v2.0
+        <span class="live">LIVE</span>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-panel="p-chat">AI Chatbot</button>
+        <button class="tab" data-panel="p-voice">AI Voice Agent</button>
+        <button class="tab" data-panel="p-call">AI Calling Agent</button>
+        <button class="tab" data-panel="p-lead">Lead Generation</button>
+        <button class="tab" data-panel="p-wa">WhatsApp Automation</button>
+        <button class="tab" data-panel="p-mkt">Marketing Funnel</button>
+      </div>
+
+      <!-- CHATBOT -->
+      <div class="panel active" id="p-chat">
+        <div class="panel-info">
+          <h3>AI Chatbot Demo</h3>
+          <p>This is how a Neuraxine chatbot greets, answers and qualifies your website visitors — instantly, in any language.</p>
+          <ul>
+            <li>Answers FAQs and pricing questions instantly</li>
+            <li>Qualifies visitors and captures contact details</li>
+            <li>Hands off hot leads to your team on WhatsApp</li>
+          </ul>
+        </div>
+        <div class="panel-stage">
+          <div class="chat-head">
+            <div class="avatar">N</div>
+            <div><div class="nm">Neura — Sales Assistant</div><div class="st">● online · replies in seconds</div></div>
+          </div>
+          <div class="chat-body" id="chatBody"></div>
+          <div class="quick" id="chatQuick"></div>
+          <div class="chat-input">
+            <input id="chatInput" type="text" placeholder="Ask anything about automation…" aria-label="Chat message">
+            <button class="send" id="chatSend" aria-label="Send message"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VOICE -->
+      <div class="panel" id="p-voice">
+        <div class="panel-info">
+          <h3>AI Voice Agent Demo</h3>
+          <p>Hear a sample conversation between a customer and a Neuraxine AI voice agent. The agent speaks, listens, qualifies and books — like a trained human caller.</p>
+          <ul>
+            <li>Natural human-like voice in real time</li>
+            <li>Handles objections and FAQs on calls</li>
+            <li>Books appointments straight into your calendar</li>
+          </ul>
+        </div>
+        <div class="panel-stage voice-stage" style="padding:28px">
+          <div class="mic-ring" id="micRing">
+            <button class="mic-btn" id="micBtn" aria-label="Talk to AI Agent">
+              <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8"/></svg>
+            </button>
+          </div>
+          <div class="eq" id="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="voice-transcript" id="voiceTranscript"></div>
+          <div class="voice-hint" id="voiceHint">TAP THE MIC — “TALK TO AI AGENT”</div>
+        </div>
+      </div>
+
+      <!-- CALLING AGENT -->
+      <div class="panel" id="p-call">
+        <div class="panel-info">
+          <h3>AI Calling Agent Demo</h3>
+          <p>Want the AI to actually call you? Drop your details and our AI calling agent will demo a real outbound call for your business type.</p>
+          <ul>
+            <li>Outbound calls in Hindi, English &amp; Hinglish</li>
+            <li>Follows your script, qualifies the lead</li>
+            <li>Call summary + recording sent to your CRM</li>
+          </ul>
+        </div>
+        <div class="panel-stage">
+          <form class="demo-form" id="callForm">
+            <label for="cfName">Your name</label>
+            <input id="cfName" type="text" placeholder="Rahul Sharma" required>
+            <label for="cfPhone">Phone number</label>
+            <input id="cfPhone" type="tel" placeholder="+91 98XXXXXXXX" required>
+            <label for="cfBiz">Business type</label>
+            <select id="cfBiz" required>
+              <option value="" disabled selected>Select your business</option>
+              <option>Real Estate</option><option>Clinic / Healthcare</option><option>Coaching / Education</option>
+              <option>E-commerce / D2C</option><option>Agency / Services</option><option>Restaurant / Local Business</option><option>Other</option>
+            </select>
+            <button type="submit" class="btn btn-lime" style="margin-top:8px;justify-content:center">Request Demo Call
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </button>
+          </form>
+          <div class="success-state" id="callSuccess">
+            <div class="success-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h4>Demo call scheduled</h4>
+            <p id="callSuccessMsg">Our AI calling agent will reach you shortly. Keep your phone nearby — the call comes from a verified Neuraxine number.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEAD GEN -->
+      <div class="panel" id="p-lead">
+        <div class="panel-info">
+          <h3>Lead Generation Tool Demo</h3>
+          <p>Submit a sample lead and watch what happens behind the scenes — capture, AI qualification, CRM sync and instant WhatsApp follow-up.</p>
+          <ul>
+            <li>Captures leads from ads, website &amp; WhatsApp</li>
+            <li>AI scores and qualifies every lead</li>
+            <li>Auto-syncs to CRM + notifies your team</li>
+          </ul>
+        </div>
+        <div class="panel-stage">
+          <form class="demo-form" id="leadForm">
+            <label for="lfName">Lead name</label>
+            <input id="lfName" type="text" placeholder="Priya Mehta" required>
+            <div class="form-row">
+              <div><label for="lfPhone" style="display:block;margin-bottom:6px">Phone</label><input id="lfPhone" type="tel" placeholder="+91 9XXXXXXXXX" required></div>
+              <div><label for="lfInterest" style="display:block;margin-bottom:6px">Interested in</label>
+                <select id="lfInterest"><option>WhatsApp Automation</option><option>AI Chatbot</option><option>AI Voice Calling</option><option>Lead Generation</option></select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-lime" style="margin-top:8px;justify-content:center">Capture This Lead</button>
+          </form>
+          <div class="pipeline" id="leadPipeline">
+            <div class="pl-step"><div class="pl-rail"><div class="pl-dot">01</div><div class="pl-line"></div></div><div class="pl-body"><b>Lead captured <span class="tag">0.4s</span></b><span id="plLead">—</span></div></div>
+            <div class="pl-step"><div class="pl-rail"><div class="pl-dot">02</div><div class="pl-line"></div></div><div class="pl-body"><b>AI qualification <span class="tag" id="plScore">scoring…</span></b><span>Intent detected · budget signal · urgency check</span></div></div>
+            <div class="pl-step"><div class="pl-rail"><div class="pl-dot">03</div><div class="pl-line"></div></div><div class="pl-body"><b>Synced to CRM <span class="tag">pipeline: New</span></b><span>Contact created, owner assigned, follow-up task set</span></div></div>
+            <div class="pl-step"><div class="pl-rail"><div class="pl-dot">04</div></div><div class="pl-body"><b>WhatsApp follow-up sent <span class="tag">auto</span></b><span id="plWa">—</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHATSAPP -->
+      <div class="panel" id="p-wa">
+        <div class="panel-info">
+          <h3>WhatsApp Automation Demo</h3>
+          <p>Watch a real WhatsApp flow run on the phone: instant greeting, FAQ menu, lead qualification, appointment booking and automated follow-up.</p>
+          <ul>
+            <li>Instant replies on your official WhatsApp number</li>
+            <li>Smart menus, FAQs and lead qualification</li>
+            <li>Appointment booking + follow-up sequences</li>
+          </ul>
+          <button class="btn btn-lime" id="waPlay" style="margin-top:26px">Experience WhatsApp Flow</button>
+        </div>
+        <div class="panel-stage" style="background:transparent;border:none">
+          <div class="phone-wrap">
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="wa-head">
+                <div class="avatar">N</div>
+                <div><div class="nm">Neuraxine Business</div><div class="st">✓ Verified · typically replies instantly</div></div>
+              </div>
+              <div class="wa-body" id="waBody"></div>
+              <div class="wa-foot">AUTOMATED BY NEURAXINE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MARKETING -->
+      <div class="panel" id="p-mkt">
+        <div class="panel-info">
+          <h3>Digital Marketing Demo</h3>
+          <p>This is the exact ad-to-conversion funnel we deploy: Meta ads feed a lead form, leads land on WhatsApp, AI follows up, and conversions happen on autopilot.</p>
+          <ul>
+            <li>Click-to-WhatsApp &amp; lead form ad funnels</li>
+            <li>AI follow-up until the lead converts</li>
+            <li>Full tracking — cost per lead to revenue</li>
+          </ul>
+          <button class="btn btn-lime" id="mktPlay" style="margin-top:26px">Run Funnel Preview</button>
+        </div>
+        <div class="panel-stage">
+          <div class="funnel" id="funnel">
+            <div class="fn-stage"><div class="fn-bar"></div><div class="num" data-count="1000">0</div><div><b>Ad impressions → Lead Form</b><span>Meta / Google ads with AI-optimised creatives</span></div></div>
+            <div class="fn-arrow">▼</div>
+            <div class="fn-stage"><div class="fn-bar"></div><div class="num" data-count="180">0</div><div><b>Leads land on WhatsApp</b><span>Instant greeting + qualification questions</span></div></div>
+            <div class="fn-arrow">▼</div>
+            <div class="fn-stage"><div class="fn-bar"></div><div class="num" data-count="96">0</div><div><b>AI follow-up sequence</b><span>Smart reminders, offers and objection handling</span></div></div>
+            <div class="fn-arrow">▼</div>
+            <div class="fn-stage"><div class="fn-bar"></div><div class="num" data-count="34">0</div><div><b>Conversions / bookings</b><span>Sales closed or appointments booked — tracked end to end</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Services</div>
+      <h2>Automation systems we build</h2>
+      <p class="sub">Each system is custom-built for your business, deployed on your numbers and accounts, and maintained by us.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h3>WhatsApp Automation</h3><p>Auto-replies, smart menus, broadcasts, lead qualification and bookings on your official WhatsApp number.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/></svg></div><h3>AI Chatbot</h3><p>A trained sales assistant on your website and socials that answers, qualifies and converts visitors 24/7.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>AI Voice Calling Agent</h3><p>Human-like AI callers for outbound sales, lead qualification, reminders and inbound call handling.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg></div><h3>AI Lead Generation System</h3><p>Multi-source lead capture with AI scoring, deduplication and instant routing to your sales team.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M2 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2"/><path d="M19 8v6M22 11h-6"/></svg></div><h3>CRM Automation</h3><p>Every lead, message and call logged automatically — pipelines, tasks and follow-ups run themselves.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg></div><h3>Appointment Booking Automation</h3><p>AI books, confirms, reschedules and reminds — synced with your calendar, zero back-and-forth.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/><circle cx="12" cy="7" r="1.5"/></svg></div><h3>Digital Marketing Automation</h3><p>Click-to-WhatsApp ad funnels, retargeting and AI follow-up sequences that turn ad spend into revenue.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div><h3>Website AI Integration</h3><p>Embed AI chat, voice and lead capture directly into your existing website — no rebuild needed.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><h3>Custom AI Business Automation</h3><p>Got a manual process eating your time? We design a custom AI system around your exact workflow.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="process">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Process</div>
+      <h2>From audit to autopilot in 4 steps</h2>
+    </div>
+    <div class="proc">
+      <div class="step rv"><div class="n">STEP 01</div><h3>Business Audit</h3><p>We map your current lead flow, response times and manual bottlenecks.</p></div>
+      <div class="step rv"><div class="n">STEP 02</div><h3>Automation Strategy</h3><p>You get a clear blueprint: which systems to deploy, in what order, with projected ROI.</p></div>
+      <div class="step rv"><div class="n">STEP 03</div><h3>System Development</h3><p>We build, train and test your AI systems on your real business data and scripts.</p></div>
+      <div class="step rv"><div class="n">STEP 04</div><h3>Launch + Optimization</h3><p>Go live, then we monitor, optimise and scale — your automation gets smarter every week.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULTS ================= -->
+<section id="results">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Results</div>
+      <h2>What automation changes</h2>
+      <p class="sub">Outcomes our clients see after switching from manual handling to Neuraxine systems.</p>
+    </div>
+    <div class="res-grid">
+      <div class="res rv"><b><span class="count" data-to="24">0</span>/7</b><span>Lead handling — no lead waits, even at 3 AM</span></div>
+      <div class="res rv"><b><span class="count" data-to="10">0</span>×</b><span>Faster customer response vs manual replies</span></div>
+      <div class="res rv"><b>+<span class="count" data-to="68">0</span>%</b><span>More qualified leads reaching your sales team</span></div>
+      <div class="res rv"><b>−<span class="count" data-to="80">0</span>%</b><span>Reduced manual work for you and your staff</span></div>
+      <div class="res rv"><b>+<span class="count" data-to="42">0</span>%</b><span>Better conversion rate with AI follow-up</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Pricing</div>
+      <h2>Built for your business, priced for your scope</h2>
+    </div>
+    <div class="price-panel rv">
+      <div>
+        <h3>Every business automates differently. So we quote that way.</h3>
+        <p>Tell us your business type, lead volume and the systems you need — we'll send a custom proposal with exact pricing, timeline and projected ROI within 24 hours. No fixed plans, no forced bundles.</p>
+        <a href="#contact" class="btn btn-lime price-cta" style="margin-top:28px">Get Custom Quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="price-list">
+        <div><span>WhatsApp / Chatbot systems</span><span>SETUP + MONTHLY</span></div>
+        <div><span>AI Voice calling agents</span><span>SETUP + PER-MIN</span></div>
+        <div><span>Lead gen + CRM automation</span><span>SETUP + MONTHLY</span></div>
+        <div><span>Full automation suite</span><span>CUSTOM QUOTE</span></div>
+        <div style="border:none"><span>Free demo &amp; audit</span><span>₹0 · ALWAYS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info rv">
+        <div class="eyebrow">Contact</div>
+        <h2>Book your free demo</h2>
+        <p class="sub">Fill the form and your details go straight to our team on WhatsApp, CRM and email. We reply within a few hours.</p>
+        <ul>
+          <li><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><div><b>WhatsApp first</b><span>Fastest way to reach us — use the green button anytime</span></div></li>
+          <li><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div><b>Free 20-min demo call</b><span>See your business automated live, no commitment</span></div></li>
+          <li><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><b>Reply within hours</b><span>Our own automation makes sure your lead never waits</span></div></li>
+        </ul>
+      </div>
+      <form class="contact-form rv" id="mainForm">
+        <div class="form-row">
+          <div><label for="mfName" style="display:block;margin-bottom:7px">Name</label><input id="mfName" type="text" placeholder="Your full name" required></div>
+          <div><label for="mfPhone" style="display:block;margin-bottom:7px">Phone</label><input id="mfPhone" type="tel" placeholder="+91 9XXXXXXXXX" required></div>
+        </div>
+        <label for="mfBiz">Business name</label>
+        <input id="mfBiz" type="text" placeholder="Your company / brand" required>
+        <div class="form-row">
+          <div><label for="mfService" style="display:block;margin-bottom:7px">Service interested in</label>
+            <select id="mfService" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option>WhatsApp Automation</option><option>AI Chatbot</option><option>AI Voice Calling Agent</option>
+              <option>AI Lead Generation</option><option>CRM Automation</option><option>Appointment Booking</option>
+              <option>Digital Marketing Automation</option><option>Website AI Integration</option><option>Custom AI Automation</option>
+            </select>
+          </div>
+          <div><label for="mfBudget" style="display:block;margin-bottom:7px">Monthly budget</label>
+            <select id="mfBudget">
+              <option value="" disabled selected>Select range</option>
+              <option>Under ₹10,000</option><option>₹10,000 – ₹25,000</option><option>₹25,000 – ₹50,000</option><option>₹50,000 – ₹1,00,000</option><option>₹1,00,000+</option>
+            </select>
+          </div>
+        </div>
+        <label for="mfMsg">Message</label>
+        <textarea id="mfMsg" placeholder="Tell us about your business and what you want to automate…"></textarea>
+        <button type="submit" class="btn btn-lime" style="justify-content:center;margin-top:6px" id="mfSubmit">Book Free Demo</button>
+        <p style="font-family:var(--mono);font-size:11px;color:var(--silver-dim);text-align:center;letter-spacing:.06em" id="mfNote">YOUR DETAILS GO DIRECTLY TO OUR TEAM ON WHATSAPP</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="logo"><span class="dot"></span>NEURAXINE</a>
+        <p>AI Automation Agency. We build systems that handle your leads, calls and customers — so your business runs 24/7.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v2a6 6 0 0 1 2-2z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.5 6.4a3 3 0 0 0-2.1-2.1C18.5 3.8 12 3.8 12 3.8s-6.5 0-8.4.5A3 3 0 0 0 1.5 6.4 31 31 0 0 0 1 12a31 31 0 0 0 .5 5.6 3 3 0 0 0 2.1 2.1c1.9.5 8.4.5 8.4.5s6.5 0 8.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23 12a31 31 0 0 0-.5-5.6z"/><path d="M10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">WhatsApp Automation</a></li>
+          <li><a href="#services">AI Chatbot</a></li>
+          <li><a href="#services">AI Voice Calling</a></li>
+          <li><a href="#services">Lead Generation</a></li>
+          <li><a href="#services">CRM Automation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#demos">Live Demos</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ready to automate?</h4>
+        <ul style="margin-bottom:20px"><li style="color:var(--silver);font-weight:300">See your business running on AI in a free 20-minute demo.</li></ul>
+        <a href="#contact" class="btn btn-lime" style="padding:13px 24px;font-size:14px">Book Free Demo</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 NEURAXINE · AI AUTOMATION AGENCY · NEURAXINE.AI</span>
+      <span>MADE IN INDIA 🇮🇳 · POWERED BY OUR OWN AUTOMATION</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating whatsapp -->
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.84 9.84 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 7 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.07 24l6.31-1.65a11.88 11.88 0 0 0 5.67 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   NEURAXINE CONFIG — edit these before going live
+   ============================================================ */
+const CONFIG = {
+  WHATSAPP_NUMBER: "+91 82379 82569",            // your WhatsApp number, country code, no +
+  API_ENDPOINT: "",                            // e.g. "https://your-api.up.railway.app/api/leads" — POSTs lead JSON when set
+  ANALYTICS: false                             // set true after adding GA4/Meta Pixel snippets below
+};
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- nav ---------- */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 30), {passive:true});
+const burger = document.getElementById('burger'), mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+/* ---------- WhatsApp links ---------- */
+function waLink(text){ return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`; }
+document.getElementById('waFloat').href = waLink("Hi Neuraxine 👋 I want to automate my business. Can we talk?");
+
+/* ---------- lead delivery (backend hookup) ---------- */
+async function sendLead(payload){
+  // 1) Backend POST (Railway/Supabase) — fires when API_ENDPOINT is set
+  if (CONFIG.API_ENDPOINT){
+    try{
+      await fetch(CONFIG.API_ENDPOINT, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({...payload, source:'website', ts: new Date().toISOString()})
+      });
+    }catch(e){ console.warn('Lead API error', e); }
+  }
+  // 2) Conversion tracking hooks
+  if (CONFIG.ANALYTICS){
+    if (typeof gtag === 'function') gtag('event','generate_lead',{lead_type: payload.type});
+    if (typeof fbq === 'function') fbq('track','Lead');
+  }
+}
+
+/* ---------- reveal on scroll ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.12});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ---------- count-up stats ---------- */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return; cio.unobserve(e.target);
+  const el = e.target, to = +el.dataset.to, t0 = performance.now(), dur = reduceMotion ? 1 : 1400;
+  (function tick(t){ const p = Math.min((t - t0)/dur, 1); el.textContent = Math.round(to * (1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(tick); })(t0);
+}), {threshold:.5});
+document.querySelectorAll('.count').forEach(el => cio.observe(el));
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById(tab.dataset.panel).classList.add('active');
+  stopVoice();
+}));
+
+/* ---------- service card glow follow ---------- */
+document.querySelectorAll('.svc').forEach(card => card.addEventListener('pointermove', e => {
+  const r = card.getBoundingClientRect();
+  card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+  card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+}));
+
+/* ============================================================
+   3D HERO — neural core (Three.js)
+   ============================================================ */
+(function(){
+  const canvas = document.getElementById('core3d');
+  if(!window.THREE || !canvas) return;
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(50, 1, .1, 100); cam.position.z = 6.2;
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  function size(){ const w = canvas.parentElement.clientWidth, h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h, false); cam.aspect = w/h; cam.updateProjectionMatrix(); }
+  size(); addEventListener('resize', size);
+
+  const group = new THREE.Group(); scene.add(group);
+  // wireframe core
+  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.7, 1),
+    new THREE.MeshBasicMaterial({color:0xC6FF00, wireframe:true, transparent:true, opacity:.5}));
+  group.add(core);
+  const inner = new THREE.Mesh(new THREE.IcosahedronGeometry(1.05, 0),
+    new THREE.MeshBasicMaterial({color:0xC6FF00, wireframe:true, transparent:true, opacity:.18}));
+  group.add(inner);
+  // orbiting rings (metallic silver)
+  for(let i=0;i<3;i++){
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(2.5 + i*.45, .006, 8, 120),
+      new THREE.MeshBasicMaterial({color: i===1 ? 0xC6FF00 : 0xaeb6bd, transparent:true, opacity: i===1 ? .55 : .25}));
+    ring.rotation.x = Math.PI/2 + (i-1)*.5; ring.rotation.y = i*.7; group.add(ring);
+  }
+  // particle field
+  const N = 420, pos = new Float32Array(N*3);
+  for(let i=0;i<N;i++){ const r = 2.4 + Math.random()*1.9, th = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
+    pos[i*3] = r*Math.sin(ph)*Math.cos(th); pos[i*3+1] = r*Math.sin(ph)*Math.sin(th); pos[i*3+2] = r*Math.cos(ph); }
+  const pgeo = new THREE.BufferGeometry(); pgeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  group.add(new THREE.Points(pgeo, new THREE.PointsMaterial({color:0xC6FF00, size:.025, transparent:true, opacity:.7})));
+
+  let mx = 0, my = 0;
+  addEventListener('pointermove', e => { mx = (e.clientX/innerWidth - .5); my = (e.clientY/innerHeight - .5); }, {passive:true});
+
+  let visible = true;
+  new IntersectionObserver(es => visible = es[0].isIntersecting, {threshold:0}).observe(canvas);
+
+  let t = 0;
+  (function loop(){
+    requestAnimationFrame(loop);
+    if(!visible) return;
+    t += reduceMotion ? 0 : .004;
+    group.rotation.y = t + mx*.4;
+    group.rotation.x = Math.sin(t*.6)*.12 + my*.3;
+    core.rotation.y -= .002; inner.rotation.x += .003;
+    renderer.render(scene, cam);
+  })();
+})();
+
+/* ============================================================
+   AI CHATBOT DEMO
+   ============================================================ */
+const chatBody = document.getElementById('chatBody'),
+      chatInput = document.getElementById('chatInput'),
+      chatQuick = document.getElementById('chatQuick');
+
+function addMsg(text, who, body = chatBody){
+  const d = document.createElement('div'); d.className = 'msg ' + who; d.innerHTML = text;
+  body.appendChild(d); body.scrollTop = body.scrollHeight; return d;
+}
+function showTyping(body = chatBody){
+  const t = document.createElement('div'); t.className = 'typing'; t.innerHTML = '<i></i><i></i><i></i>';
+  body.appendChild(t); body.scrollTop = body.scrollHeight; return t;
+}
+function setQuick(opts){
+  chatQuick.innerHTML = '';
+  opts.forEach(o => { const b = document.createElement('button'); b.textContent = o;
+    b.onclick = () => userSays(o); chatQuick.appendChild(b); });
+}
+function botReply(text, opts){
+  const t = showTyping();
+  setTimeout(() => { t.remove(); addMsg(text, 'bot'); if(opts) setQuick(opts); }, reduceMotion ? 50 : 850 + Math.random()*500);
+}
+function userSays(text){
+  addMsg(text, 'user'); chatQuick.innerHTML = ''; route(text.toLowerCase());
+}
+function route(q){
+  if(/price|cost|charge|quote|kitna|budget/.test(q))
+    botReply("Pricing depends on which systems you need 💡 Most clients start with WhatsApp automation or an AI chatbot, with a one-time setup + small monthly fee. Want a custom quote for your business?", ["Get custom quote","What services do you offer?"]);
+  else if(/service|offer|what.*do|kya/.test(q))
+    botReply("We build: WhatsApp automation, AI chatbots, AI voice calling agents, lead generation systems, CRM automation, appointment booking and ad funnels — all custom for your business. Which one interests you?", ["WhatsApp automation","AI voice calling","Lead generation"]);
+  else if(/whatsapp/.test(q))
+    botReply("Our WhatsApp automation replies instantly to every enquiry, answers FAQs, qualifies leads and books appointments — on your official number, 24/7. You can try the live flow in the <b>WhatsApp Automation</b> tab above ⚡", ["Get custom quote","Book free demo"]);
+  else if(/voice|call/.test(q))
+    botReply("Our AI voice agents make and receive calls in natural Hindi, English or Hinglish — qualifying leads, handling FAQs and booking meetings. Hear one in the <b>AI Voice Agent</b> tab 🎙️", ["Request demo call","Book free demo"]);
+  else if(/lead/.test(q))
+    botReply("Our lead gen system captures leads from ads, your website and WhatsApp — AI scores them, syncs them to your CRM and follows up automatically. Try it live in the <b>Lead Generation</b> tab 📈", ["Book free demo","Get custom quote"]);
+  else if(/demo|book|meet|talk|connect|quote/.test(q)){
+    botReply("Perfect 🙌 Drop your details in the contact form below, or message us directly on WhatsApp — we'll set up your free 20-minute demo. <b>This entire conversation is exactly what your customers would experience.</b>", ["Take me to the form"]);
+  }
+  else if(/form/.test(q)){
+    botReply("Scrolling you to the form now 👇"); setTimeout(() => document.getElementById('contact').scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth'}), 900);
+  }
+  else if(/hi|hello|hey|namaste/.test(q))
+    botReply("Hey! 👋 I'm Neura, Neuraxine's AI assistant. Ask me about our services, pricing, or book a free demo — I reply in seconds, just like the bots we build for clients.", ["What services do you offer?","Pricing?","Book free demo"]);
+  else
+    botReply("Good question! I can tell you about our automation services, pricing, or set up a free demo. What would you like to know?", ["What services do you offer?","Pricing?","Book free demo"]);
+}
+document.getElementById('chatSend').addEventListener('click', () => { if(chatInput.value.trim()){ userSays(chatInput.value.trim()); chatInput.value=''; } });
+chatInput.addEventListener('keydown', e => { if(e.key === 'Enter' && chatInput.value.trim()){ userSays(chatInput.value.trim()); chatInput.value=''; } });
+// greet on load
+setTimeout(() => botReply("Hi 👋 I'm <b>Neura</b> — the kind of AI assistant Neuraxine builds for businesses like yours. Ask me anything, or tap an option below.", ["What services do you offer?","Pricing?","Book free demo"]), 1100);
+
+/* ============================================================
+   AI VOICE AGENT DEMO (Web Speech)
+   ============================================================ */
+const voiceScript = [
+  {who:'ai', text:"Hello! This is Aanya from Neuraxine. Am I speaking with the business owner?"},
+  {who:'hu', text:"Yes, speaking. Who is this?"},
+  {who:'ai', text:"Great! I'm an AI voice agent. I help businesses handle customer calls automatically. Quick question — how many enquiry calls do you get every day?"},
+  {who:'hu', text:"Around twenty to thirty, it's hard to keep up honestly."},
+  {who:'ai', text:"That's exactly where I help. I can answer every call instantly, qualify the lead, and book appointments directly into your calendar. Would you like a free demo for your business this week?"},
+  {who:'hu', text:"Hmm, okay. Yes, that sounds interesting."},
+  {who:'ai', text:"Perfect! I've noted your interest. Our team will send the demo details on WhatsApp. Thank you, have a wonderful day!"}
+];
+const micBtn = document.getElementById('micBtn'), micRing = document.getElementById('micRing'),
+      vT = document.getElementById('voiceTranscript'), vHint = document.getElementById('voiceHint'),
+      eqBars = document.querySelectorAll('#eq i');
+let voiceOn = false, eqTimer = null, voiceIdx = 0, voiceTimeout = null;
+
+function eqRun(on){
+  clearInterval(eqTimer);
+  if(on && !reduceMotion){ eqTimer = setInterval(() => eqBars.forEach(b => b.style.height = (6 + Math.random()*26) + 'px'), 120); }
+  else eqBars.forEach(b => b.style.height = '8px');
+}
+function speak(text){
+  return new Promise(res => {
+    if(!('speechSynthesis' in window)) return setTimeout(res, Math.min(text.length*55, 5000));
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 1; u.pitch = 1.05;
+    const vs = speechSynthesis.getVoices();
+    u.voice = vs.find(v => /en-IN/i.test(v.lang)) || vs.find(v => /female|zira|samantha/i.test(v.name)) || vs[0];
+    u.onend = res; u.onerror = res;
+    speechSynthesis.speak(u);
+  });
+}
+async function playVoice(){
+  if(voiceIdx >= voiceScript.length){ stopVoice(); vHint.textContent = "DEMO COMPLETE — IMAGINE THIS ON EVERY CALL"; return; }
+  const line = voiceScript[voiceIdx++];
+  const row = document.createElement('div'); row.className = 'vt-line ' + line.who;
+  row.innerHTML = `<b>${line.who === 'ai' ? 'AI AGENT' : 'CUSTOMER'}</b><span>${line.text}</span>`;
+  vT.appendChild(row); vT.scrollTop = vT.scrollHeight;
+  if(line.who === 'ai'){ eqRun(true); await speak(line.text); eqRun(false); if(voiceOn) voiceTimeout = setTimeout(playVoice, 450); }
+  else { voiceTimeout = setTimeout(() => { if(voiceOn) playVoice(); }, Math.min(1200 + line.text.length*28, 3400)); }
+}
+function stopVoice(){
+  voiceOn = false; voiceIdx = 0; clearTimeout(voiceTimeout); eqRun(false);
+  micRing.classList.remove('on');
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+}
+micBtn.addEventListener('click', () => {
+  if(voiceOn){ stopVoice(); vHint.textContent = "TAP THE MIC — “TALK TO AI AGENT”"; return; }
+  voiceOn = true; vT.innerHTML = ''; voiceIdx = 0;
+  micRing.classList.add('on'); vHint.textContent = "LIVE — AI AGENT ON CALL · TAP TO END";
+  if('speechSynthesis' in window && speechSynthesis.getVoices().length === 0){
+    speechSynthesis.onvoiceschanged = () => { if(voiceOn && voiceIdx === 0) playVoice(); };
+    setTimeout(() => { if(voiceOn && voiceIdx === 0) playVoice(); }, 600);
+  } else playVoice();
+});
+
+/* ============================================================
+   AI CALLING AGENT FORM
+   ============================================================ */
+document.getElementById('callForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('cfName').value, phone = document.getElementById('cfPhone').value, biz = document.getElementById('cfBiz').value;
+  sendLead({type:'demo_call', name, phone, business_type: biz});
+  document.getElementById('callForm').style.display = 'none';
+  document.getElementById('callSuccessMsg').innerHTML = `Thanks <b>${name}</b>! Our AI calling agent will reach <b>${phone}</b> shortly with a demo built for <b>${biz}</b> businesses. Keep your phone nearby 📞`;
+  document.getElementById('callSuccess').classList.add('show');
+  // also notify team on WhatsApp
+  setTimeout(() => open(waLink(`🤖 Demo Call Request\nName: ${name}\nPhone: ${phone}\nBusiness: ${biz}`), '_blank'), 1200);
+});
+
+/* ============================================================
+   LEAD GEN PIPELINE
+   ============================================================ */
+document.getElementById('leadForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('lfName').value, phone = document.getElementById('lfPhone').value, intr = document.getElementById('lfInterest').value;
+  sendLead({type:'lead_demo', name, phone, interest: intr});
+  document.getElementById('leadForm').style.display = 'none';
+  const pipe = document.getElementById('leadPipeline'); pipe.classList.add('show');
+  document.getElementById('plLead').textContent = `${name} · ${phone} · ${intr}`;
+  document.getElementById('plWa').textContent = `“Hi ${name.split(' ')[0]}! Thanks for your interest in ${intr}. When's a good time for a quick call?”`;
+  const steps = pipe.querySelectorAll('.pl-step');
+  steps.forEach((s, i) => setTimeout(() => {
+    s.classList.add('on');
+    if(i === 1) setTimeout(() => document.getElementById('plScore').textContent = 'SCORE 87 · HOT 🔥', 600);
+  }, reduceMotion ? i*80 : 400 + i*1000));
+});
+
+/* ============================================================
+   WHATSAPP FLOW DEMO
+   ============================================================ */
+const waBody = document.getElementById('waBody');
+let waRunning = false;
+const waFlow = [
+  {who:'wa-user', text:"Hi, I saw your ad. Need info"},
+  {who:'wa-bot', text:"Hello! 👋 Welcome to <b>Glow Dental Clinic</b>. I'm your automated assistant — I reply instantly, 24/7. How can I help you today?"},
+  {who:'btns', opts:["💰 Treatment prices","📅 Book appointment","❓ FAQs"]},
+  {who:'wa-user', text:"📅 Book appointment"},
+  {who:'wa-bot', text:"Great choice! May I know your name and what treatment you're looking for?"},
+  {who:'wa-user', text:"Rohan, teeth whitening"},
+  {who:'wa-bot', text:"Thanks Rohan! ✨ Teeth whitening takes ~45 mins. Available slots tomorrow:\n🕐 11:00 AM\n🕒 3:00 PM\n🕕 6:30 PM\nWhich works for you?"},
+  {who:'wa-user', text:"3 PM works"},
+  {who:'wa-bot', text:"✅ <b>Booked!</b> Teeth whitening · Tomorrow 3:00 PM with Dr. Mehta. You'll get a reminder 2 hours before. Anything else?"},
+  {who:'wa-bot', text:"📩 <i>Next day follow-up:</i> Hi Rohan! Hope your session went great 😊 Here's 10% off your next visit: <b>GLOW10</b>. Reply BOOK anytime!"}
+];
+document.getElementById('waPlay').addEventListener('click', async () => {
+  if(waRunning) return; waRunning = true; waBody.innerHTML = '';
+  for(const step of waFlow){
+    if(step.who === 'btns'){
+      const w = document.createElement('div'); w.className = 'wa-btns';
+      step.opts.forEach(o => { const b = document.createElement('button'); b.textContent = o; w.appendChild(b); });
+      waBody.appendChild(w); waBody.scrollTop = waBody.scrollHeight;
+      await new Promise(r => setTimeout(r, reduceMotion ? 120 : 1400));
+    } else {
+      if(step.who === 'wa-bot'){ const t = showTyping(waBody); await new Promise(r => setTimeout(r, reduceMotion ? 60 : 900)); t.remove(); }
+      addMsg(step.text.replace(/\n/g,'<br>'), step.who, waBody);
+      await new Promise(r => setTimeout(r, reduceMotion ? 100 : 1100));
+    }
+  }
+  waRunning = false;
+});
+
+/* ============================================================
+   MARKETING FUNNEL DEMO
+   ============================================================ */
+document.getElementById('mktPlay').addEventListener('click', () => {
+  const stages = document.querySelectorAll('#funnel .fn-stage');
+  stages.forEach(s => { s.classList.remove('on'); s.querySelector('.fn-bar').style.width = '0'; });
+  stages.forEach((s, i) => setTimeout(() => {
+    s.classList.add('on');
+    const num = s.querySelector('.num'), to = +num.dataset.count, t0 = performance.now(), dur = reduceMotion ? 1 : 1100;
+    (function tick(t){ const p = Math.min((t-t0)/dur,1); num.textContent = Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('en-IN'); if(p<1) requestAnimationFrame(tick); })(t0);
+    s.querySelector('.fn-bar').style.width = (100 * to / 1000 * (i===0?1:5.5)) + '%';
+  }, reduceMotion ? i*100 : i*900));
+});
+
+/* ============================================================
+   MAIN CONTACT FORM → WhatsApp + backend
+   ============================================================ */
+document.getElementById('mainForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value;
+  const payload = {type:'main_lead', name:v('mfName'), phone:v('mfPhone'), business:v('mfBiz'),
+                   service:v('mfService'), budget:v('mfBudget'), message:v('mfMsg')};
+  sendLead(payload);
+  const msg = `🚀 New Demo Request — Neuraxine Website\n\n👤 Name: ${payload.name}\n📞 Phone: ${payload.phone}\n🏢 Business: ${payload.business}\n⚙️ Service: ${payload.service}\n💰 Budget: ${payload.budget || '—'}\n💬 Message: ${payload.message || '—'}`;
+  open(waLink(msg), '_blank');
+  const btn = document.getElementById('mfSubmit');
+  btn.textContent = '✓ Sent — check WhatsApp'; btn.style.background = 'var(--lime)';
+  document.getElementById('mfNote').textContent = 'LEAD DELIVERED · WE WILL REPLY WITHIN A FEW HOURS';
+  e.target.querySelectorAll('input,select,textarea').forEach(el => el.value = '');
+  setTimeout(() => btn.textContent = 'Book Free Demo', 5000);
+});
+
+/* ============================================================
+   ANALYTICS — paste your GA4 + Meta Pixel snippets here,
+   then set CONFIG.ANALYTICS = true
+   ============================================================ */
+</script>
+</body>
+</html>
