@@ -84,7 +84,7 @@ function SceneContent({ services, scrollProgress, hoveredModule, onHoverModule, 
       <DataStreams />
       <ParticleUniverse count={1500} />
 
-      <group opacity={heroOpacity}>
+      <group>
         <NeuralNetwork mouse={mouse} intensity={heroOpacity} />
         <AICoreShader mouse={mouse} intensity={heroOpacity} />
       </group>
