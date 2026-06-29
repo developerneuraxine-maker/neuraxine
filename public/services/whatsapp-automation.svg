@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="g"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="bg"><feGaussianBlur stdDeviation="35" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="phoneG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3a24"/>
+      <stop offset="100%" stop-color="#0d1f13"/>
+    </linearGradient>
+    <linearGradient id="bubble1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#25D366"/>
+      <stop offset="100%" stop-color="#128C50"/>
+    </linearGradient>
+    <linearGradient id="headerG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#25D366"/>
+      <stop offset="100%" stop-color="#075E54"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#25D366" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#25D366" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background glow -->
+  <circle cx="200" cy="210" r="160" fill="url(#glow1)"/>
+
+  <!-- Phone body -->
+  <rect x="105" y="52" width="150" height="296" rx="26" fill="url(#phoneG)" stroke="#2a5c38" stroke-width="2.5"/>
+  <rect x="117" y="74" width="126" height="254" rx="12" fill="#0a0a0a"/>
+  <!-- Notch -->
+  <rect x="158" y="60" width="64" height="8" rx="4" fill="#1a3a24"/>
+  <!-- Home bar -->
+  <rect x="158" y="336" width="64" height="4" rx="2" fill="#2a5c38"/>
+
+  <!-- WhatsApp header -->
+  <rect x="117" y="74" width="126" height="42" rx="10" fill="url(#headerG)"/>
+  <rect x="117" y="98" width="126" height="18" fill="url(#headerG)"/>
+  <!-- Avatar circle -->
+  <circle cx="136" cy="95" r="13" fill="#075E54"/>
+  <circle cx="136" cy="91" r="5" fill="#25D366" opacity="0.9"/>
+  <path d="M127,102 Q136,99 145,102" fill="none" stroke="#25D366" stroke-width="2" opacity="0.9"/>
+  <!-- Online dot -->
+  <circle cx="145" cy="82" r="4" fill="#4ade80"/>
+  <!-- Name lines -->
+  <rect x="152" y="86" width="60" height="6" rx="3" fill="white" opacity="0.9"/>
+  <rect x="152" y="97" width="42" height="5" rx="2.5" fill="#a7f3d0" opacity="0.7"/>
+
+  <!-- Incoming bubble 1 (green) -->
+  <g filter="url(#g)">
+    <rect x="122" y="128" width="96" height="32" rx="14" fill="url(#bubble1)"/>
+    <polygon points="126,160 118,170 138,160" fill="#128C50"/>
+    <rect x="132" y="137" width="72" height="6" rx="3" fill="white" opacity="0.9"/>
+    <rect x="132" y="148" width="54" height="5" rx="2.5" fill="white" opacity="0.7"/>
+  </g>
+
+  <!-- Outgoing bubble (blue-grey) -->
+  <rect x="136" y="174" width="100" height="30" rx="13" fill="#1e3a4f"/>
+  <polygon points="232,204 242,214 224,204" fill="#1e3a4f"/>
+  <rect x="146" y="182" width="72" height="5" rx="2.5" fill="#93c5fd" opacity="0.8"/>
+  <rect x="146" y="192" width="52" height="5" rx="2.5" fill="#93c5fd" opacity="0.55"/>
+  <!-- Double tick -->
+  <polyline points="218,199 221,202 226,196" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round"/>
+  <polyline points="222,199 225,202 230,196" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- AI Reply bubble (green bright) -->
+  <g filter="url(#g)">
+    <rect x="122" y="218" width="110" height="38" rx="15" fill="#25D366"/>
+    <polygon points="126,256 116,268 144,256" fill="#25D366"/>
+    <!-- AI indicator -->
+    <circle cx="140" cy="237" r="8" fill="#075E54"/>
+    <text x="140" y="241" text-anchor="middle" fill="#4ade80" font-size="9" font-family="Arial" font-weight="bold">AI</text>
+    <rect x="154" y="231" width="64" height="5" rx="2.5" fill="white" opacity="0.95"/>
+    <rect x="154" y="241" width="48" height="5" rx="2.5" fill="white" opacity="0.7"/>
+    <rect x="154" y="251" width="56" height="4" rx="2" fill="white" opacity="0.5"/>
+  </g>
+
+  <!-- Typing dots -->
+  <g filter="url(#g)">
+    <rect x="122" y="270" width="66" height="26" rx="13" fill="#1a3a24" stroke="#25D366" stroke-width="1.5"/>
+    <circle cx="141" cy="283" r="4.5" fill="#25D366" opacity="0.95"/>
+    <circle cx="155" cy="283" r="4.5" fill="#25D366" opacity="0.65"/>
+    <circle cx="169" cy="283" r="4.5" fill="#25D366" opacity="0.35"/>
+  </g>
+
+  <!-- Right side: automation badges -->
+  <g filter="url(#g)">
+    <!-- Badge 1: Auto Reply -->
+    <rect x="278" y="110" width="98" height="52" rx="14" fill="#064e3b" stroke="#25D366" stroke-width="1.8"/>
+    <circle cx="298" cy="130" r="10" fill="#25D366" opacity="0.9"/>
+    <text x="298" y="134" text-anchor="middle" fill="#064e3b" font-size="11" font-family="Arial" font-weight="bold">⚡</text>
+    <rect x="314" y="122" width="52" height="5" rx="2.5" fill="#4ade80" opacity="0.85"/>
+    <rect x="314" y="132" width="38" height="4" rx="2" fill="#4ade80" opacity="0.55"/>
+    <rect x="314" y="141" width="46" height="4" rx="2" fill="#4ade80" opacity="0.38"/>
+    <!-- connector -->
+    <line x1="255" y1="175" x2="278" y2="145" stroke="#25D366" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+    <!-- Badge 2: Broadcast -->
+    <rect x="278" y="192" width="98" height="52" rx="14" fill="#1e3a4f" stroke="#60a5fa" stroke-width="1.8"/>
+    <circle cx="298" cy="213" r="10" fill="#3b82f6" opacity="0.9"/>
+    <text x="298" y="217" text-anchor="middle" fill="white" font-size="10" font-family="Arial">📢</text>
+    <rect x="314" y="205" width="52" height="5" rx="2.5" fill="#93c5fd" opacity="0.85"/>
+    <rect x="314" y="215" width="38" height="4" rx="2" fill="#93c5fd" opacity="0.55"/>
+    <rect x="314" y="224" width="46" height="4" rx="2" fill="#93c5fd" opacity="0.38"/>
+    <line x1="255" y1="238" x2="278" y2="225" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+
+    <!-- Badge 3: Follow-up -->
+    <rect x="278" y="274" width="98" height="52" rx="14" fill="#2d1b4e" stroke="#a855f7" stroke-width="1.8"/>
+    <circle cx="298" cy="295" r="10" fill="#a855f7" opacity="0.9"/>
+    <text x="298" y="299" text-anchor="middle" fill="white" font-size="10" font-family="Arial">🔄</text>
+    <rect x="314" y="287" width="52" height="5" rx="2.5" fill="#d8b4fe" opacity="0.85"/>
+    <rect x="314" y="297" width="38" height="4" rx="2" fill="#d8b4fe" opacity="0.55"/>
+    <rect x="314" y="306" width="46" height="4" rx="2" fill="#d8b4fe" opacity="0.38"/>
+    <line x1="255" y1="290" x2="278" y2="300" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+  </g>
+
+  <!-- Floating dots -->
+  <g filter="url(#g)">
+    <circle cx="60" cy="160" r="6" fill="#25D366" opacity="0.5"/>
+    <circle cx="48" cy="210" r="4" fill="#60a5fa" opacity="0.4"/>
+    <circle cx="64" cy="262" r="5" fill="#a855f7" opacity="0.35"/>
+    <circle cx="200" cy="370" r="5" fill="#25D366" opacity="0.25"/>
+  </g>
+</svg>
