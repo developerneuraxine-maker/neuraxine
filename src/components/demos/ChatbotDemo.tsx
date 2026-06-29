@@ -28,6 +28,7 @@ export function ChatbotDemo() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (messages.length <= 1) return; // don't scroll on initial mount
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, typing]);
 

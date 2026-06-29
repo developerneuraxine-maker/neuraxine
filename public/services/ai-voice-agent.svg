@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="g"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="micG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="micTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="200" cy="195" rx="170" ry="155" fill="url(#bgGlow)"/>
+
+  <!-- Sound wave rings (back to front) -->
+  <g filter="url(#g)">
+    <ellipse cx="200" cy="190" rx="148" ry="130" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.18"/>
+    <ellipse cx="200" cy="190" rx="120" ry="106" fill="none" stroke="#6366f1" stroke-width="2" opacity="0.28"/>
+    <ellipse cx="200" cy="190" rx="92" ry="82" fill="none" stroke="#8b5cf6" stroke-width="2.5" opacity="0.42"/>
+    <ellipse cx="200" cy="190" rx="65" ry="58" fill="none" stroke="#a855f7" stroke-width="3" opacity="0.6"/>
+  </g>
+
+  <!-- Mic body -->
+  <rect x="162" y="72" width="76" height="120" rx="38" fill="url(#micG)" stroke="#93c5fd" stroke-width="2.5"/>
+  <!-- Mic highlight -->
+  <rect x="172" y="82" width="30" height="50" rx="15" fill="url(#micTop)" opacity="0.5"/>
+  <!-- Mic grill lines -->
+  <line x1="174" y1="112" x2="226" y2="112" stroke="#bfdbfe" stroke-width="1.8" opacity="0.5"/>
+  <line x1="172" y1="125" x2="228" y2="125" stroke="#bfdbfe" stroke-width="1.8" opacity="0.4"/>
+  <line x1="174" y1="138" x2="226" y2="138" stroke="#bfdbfe" stroke-width="1.8" opacity="0.3"/>
+  <!-- Mic top capsule glow -->
+  <g filter="url(#g)">
+    <ellipse cx="200" cy="100" rx="26" ry="20" fill="#60a5fa" opacity="0.4"/>
+  </g>
+
+  <!-- Mic stand arc -->
+  <g filter="url(#g)">
+    <path d="M145,192 Q145,252 200,268 Q255,252 255,192" fill="none" stroke="#60a5fa" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="200" y1="268" x2="200" y2="318" stroke="#60a5fa" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="155" y1="318" x2="245" y2="318" stroke="#60a5fa" stroke-width="4" stroke-linecap="round"/>
+    <line x1="142" y1="330" x2="258" y2="330" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- Left waveform bars -->
+  <g filter="url(#g)">
+    <rect x="44" y="168" width="10" height="44" rx="5" fill="#a855f7" opacity="0.8"/>
+    <rect x="62" y="148" width="10" height="84" rx="5" fill="#8b5cf6" opacity="0.9"/>
+    <rect x="80" y="162" width="10" height="56" rx="5" fill="#6366f1" opacity="0.85"/>
+    <rect x="98" y="155" width="10" height="70" rx="5" fill="#818cf8" opacity="0.75"/>
+  </g>
+
+  <!-- Right waveform bars -->
+  <g filter="url(#g)">
+    <rect x="292" y="155" width="10" height="70" rx="5" fill="#818cf8" opacity="0.75"/>
+    <rect x="310" y="162" width="10" height="56" rx="5" fill="#6366f1" opacity="0.85"/>
+    <rect x="328" y="148" width="10" height="84" rx="5" fill="#8b5cf6" opacity="0.9"/>
+    <rect x="346" y="168" width="10" height="44" rx="5" fill="#a855f7" opacity="0.8"/>
+  </g>
+
+  <!-- Call badge top-right -->
+  <g filter="url(#g)">
+    <circle cx="332" cy="82" r="32" fill="#1e3a5f" stroke="#3b82f6" stroke-width="2.5"/>
+    <path d="M316,70 Q316,58 328,58 Q340,58 340,70 L340,80 Q336,86 328,84 Q326,92 334,100 Q342,92 346,96 L352,104 Q349,112 340,108 Q316,98 314,76 Z" fill="#60a5fa" opacity="0.95" transform="scale(0.65) translate(90,50)"/>
+    <!-- Wifi signal on call icon -->
+    <path d="M332,60 Q345,66 345,78" fill="none" stroke="#4ade80" stroke-width="2" opacity="0.8"/>
+    <path d="M332,64 Q341,69 341,78" fill="none" stroke="#4ade80" stroke-width="1.5" opacity="0.6"/>
+  </g>
+
+  <!-- AI spark badge top-left -->
+  <g filter="url(#g)">
+    <circle cx="68" cy="82" r="28" fill="#2d1b4e" stroke="#a855f7" stroke-width="2"/>
+    <text x="68" y="90" text-anchor="middle" fill="#c084fc" font-size="28" font-family="Arial">✦</text>
+  </g>
+
+  <!-- Floating particles -->
+  <g filter="url(#g)">
+    <circle cx="200" cy="368" r="5" fill="#3b82f6" opacity="0.3"/>
+    <circle cx="48" cy="280" r="4" fill="#a855f7" opacity="0.3"/>
+    <circle cx="352" cy="280" r="4" fill="#6366f1" opacity="0.3"/>
+  </g>
+</svg>

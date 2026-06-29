@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="g"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hubG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#0d4a44"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="200" cy="200" r="165" fill="url(#bgGlow)"/>
+
+  <!-- Connection lines with animated-look gradient -->
+  <g filter="url(#g)">
+    <line x1="200" y1="200" x2="200" y2="80"  stroke="#14b8a6" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.7"/>
+    <line x1="200" y1="200" x2="312" y2="136" stroke="#2dd4bf" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.7"/>
+    <line x1="200" y1="200" x2="312" y2="264" stroke="#0ea5e9" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.65"/>
+    <line x1="200" y1="200" x2="200" y2="320" stroke="#14b8a6" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.6"/>
+    <line x1="200" y1="200" x2="88" y2="264"  stroke="#2dd4bf" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.65"/>
+    <line x1="200" y1="200" x2="88" y2="136"  stroke="#0ea5e9" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.7"/>
+    <!-- Outer ring connections -->
+    <line x1="200" y1="80"  x2="312" y2="136" stroke="#14b8a6" stroke-width="1.5" opacity="0.3"/>
+    <line x1="312" y1="136" x2="312" y2="264" stroke="#14b8a6" stroke-width="1.5" opacity="0.25"/>
+    <line x1="312" y1="264" x2="200" y2="320" stroke="#2dd4bf" stroke-width="1.5" opacity="0.25"/>
+    <line x1="200" y1="320" x2="88"  y2="264" stroke="#2dd4bf" stroke-width="1.5" opacity="0.25"/>
+    <line x1="88"  y1="264" x2="88"  y2="136" stroke="#0ea5e9" stroke-width="1.5" opacity="0.25"/>
+    <line x1="88"  y1="136" x2="200" y2="80"  stroke="#0ea5e9" stroke-width="1.5" opacity="0.3"/>
+  </g>
+
+  <!-- Data flow dots on lines -->
+  <g filter="url(#g)">
+    <circle cx="200" cy="140" r="5" fill="#2dd4bf" opacity="0.85"/>
+    <circle cx="256" cy="168" r="5" fill="#2dd4bf" opacity="0.8"/>
+    <circle cx="256" cy="232" r="5" fill="#0ea5e9" opacity="0.8"/>
+    <circle cx="200" cy="260" r="5" fill="#14b8a6" opacity="0.75"/>
+    <circle cx="144" cy="232" r="5" fill="#2dd4bf" opacity="0.8"/>
+    <circle cx="144" cy="168" r="5" fill="#0ea5e9" opacity="0.85"/>
+  </g>
+
+  <!-- Centre hub (gear) -->
+  <g filter="url(#g)">
+    <circle cx="200" cy="200" r="48" fill="url(#hubG)" stroke="#14b8a6" stroke-width="3"/>
+    <circle cx="200" cy="200" r="30" fill="#0a2e2b" stroke="#2dd4bf" stroke-width="2"/>
+    <circle cx="200" cy="200" r="10" fill="#14b8a6"/>
+    <!-- Gear teeth -->
+    <rect x="197" y="148" width="6" height="12" rx="3" fill="#14b8a6"/>
+    <rect x="197" y="240" width="6" height="12" rx="3" fill="#14b8a6"/>
+    <rect x="148" y="197" width="12" height="6" rx="3" fill="#14b8a6"/>
+    <rect x="240" y="197" width="12" height="6" rx="3" fill="#14b8a6"/>
+    <rect x="164" y="157" width="6" height="12" rx="3" fill="#2dd4bf" transform="rotate(45 167 163)"/>
+    <rect x="230" y="231" width="6" height="12" rx="3" fill="#2dd4bf" transform="rotate(45 233 237)"/>
+    <rect x="230" y="157" width="6" height="12" rx="3" fill="#0ea5e9" transform="rotate(-45 233 163)"/>
+    <rect x="164" y="231" width="6" height="12" rx="3" fill="#0ea5e9" transform="rotate(-45 167 237)"/>
+  </g>
+
+  <!-- Outer nodes -->
+  <!-- Top: Contacts -->
+  <g filter="url(#g)">
+    <circle cx="200" cy="80" r="30" fill="#134e4a" stroke="#2dd4bf" stroke-width="2.5"/>
+    <circle cx="200" cy="72" r="10" fill="#2dd4bf" opacity="0.85"/>
+    <path d="M183,88 Q200,83 217,88" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M187,92 Q200,88 213,92" fill="none" stroke="#2dd4bf" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Top-right: Deals -->
+  <g filter="url(#g)">
+    <circle cx="312" cy="136" r="28" fill="#1e3a5f" stroke="#0ea5e9" stroke-width="2.5"/>
+    <rect x="294" y="140" width="8" height="16" rx="3" fill="#38bdf8" opacity="0.7"/>
+    <rect x="306" y="132" width="8" height="24" rx="3" fill="#0ea5e9" opacity="0.85"/>
+    <rect x="318" y="124" width="8" height="32" rx="3" fill="#38bdf8"/>
+  </g>
+
+  <!-- Bottom-right: Tasks -->
+  <g filter="url(#g)">
+    <circle cx="312" cy="264" r="28" fill="#1c1917" stroke="#f59e0b" stroke-width="2.5"/>
+    <polyline points="296,264 304,274 328,252" fill="none" stroke="#fbbf24" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Bottom: Sync -->
+  <g filter="url(#g)">
+    <circle cx="200" cy="320" r="28" fill="#0f2820" stroke="#4ade80" stroke-width="2.5"/>
+    <path d="M185,315 A18,18 0 0,1 215,308" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M215,325 A18,18 0 0,1 185,332" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="215,306 222,313 208,314" fill="#4ade80"/>
+    <polygon points="185,334 178,327 192,326" fill="#4ade80"/>
+  </g>
+
+  <!-- Bottom-left: Automation -->
+  <g filter="url(#g)">
+    <circle cx="88" cy="264" r="28" fill="#2d1b4e" stroke="#a855f7" stroke-width="2.5"/>
+    <polyline points="76,258 82,270 88,260 94,272 100,258" fill="none" stroke="#c084fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Top-left: Notifications -->
+  <g filter="url(#g)">
+    <circle cx="88" cy="136" r="28" fill="#431407" stroke="#fb923c" stroke-width="2.5"/>
+    <path d="M88,120 Q98,120 100,130 L104,148 Q96,152 88,152 Q80,152 72,148 L76,130 Q78,120 88,120Z" fill="#fb923c" opacity="0.85"/>
+    <rect x="84" y="153" width="8" height="5" rx="2.5" fill="#fb923c" opacity="0.7"/>
+    <circle cx="100" cy="118" r="5" fill="#ef4444"/>
+  </g>
+</svg>

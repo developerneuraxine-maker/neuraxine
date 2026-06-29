@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import { SERVICE_DETAILS } from "@/lib/constants";
+import { SLUG_MAP } from "@/data/services";
+import { ServiceImage } from "@/components/ServiceImage";
 
 interface Service {
   id: string;
@@ -20,10 +22,6 @@ interface EcosystemSectionProps {
 }
 
 export function EcosystemSection({ services, hoveredModule, onHoverModule }: EcosystemSectionProps) {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-
-  const toggle = (id: string) => setExpandedId((prev) => (prev === id ? null : id));
-
   return (
     <section id="ecosystem" className="relative py-32 px-6">
       <div className="relative z-10 mx-auto max-w-7xl w-full">
@@ -50,9 +48,9 @@ export function EcosystemSection({ services, hoveredModule, onHoverModule }: Eco
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {services.map((service, i) => {
             const details = SERVICE_DETAILS[service.id];
-            const isExpanded = expandedId === service.id;
             const isHovered = hoveredModule === service.id;
             const accent = details?.accent ?? "#C6FF00";
+            const slug = SLUG_MAP[service.id] ?? service.id;
 
             return (
               <motion.div
@@ -64,19 +62,20 @@ export function EcosystemSection({ services, hoveredModule, onHoverModule }: Eco
                 onMouseEnter={() => onHoverModule(service.id)}
                 onMouseLeave={() => onHoverModule(null)}
               >
-                <div
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden cursor-pointer ${
-                    isHovered || isExpanded
+                <Link
+                  href={`/services/${slug}`}
+                  className={`block rounded-2xl border transition-all duration-300 overflow-hidden ${
+                    isHovered
                       ? "border-[rgba(198,255,0,0.4)] shadow-[0_0_20px_rgba(198,255,0,0.1)]"
                       : "border-[#2a2a2a] hover:border-[rgba(198,255,0,0.25)]"
                   }`}
                   style={{
                     background: "#161616",
-                    boxShadow: isHovered || isExpanded
+                    boxShadow: isHovered
                       ? `0 0 60px ${accent}18, inset 0 0 60px ${accent}08`
                       : undefined,
+                    textDecoration: "none",
                   }}
-                  onClick={() => toggle(service.id)}
                 >
                   {/* Coloured visual banner */}
                   <div
@@ -115,10 +114,10 @@ export function EcosystemSection({ services, hoveredModule, onHoverModule }: Eco
                       </div>
                     )}
 
-                    {/* Big icon */}
-                    <span className="relative text-5xl select-none" role="img">
-                      {service.icon}
-                    </span>
+                    {/* Service image with emoji fallback */}
+                    <div className="relative">
+                      <ServiceImage slug={slug} emoji={service.icon} size={130} />
+                    </div>
                   </div>
 
                   {/* Card body */}
@@ -126,14 +125,12 @@ export function EcosystemSection({ services, hoveredModule, onHoverModule }: Eco
                     {/* Title row */}
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <h3 className="text-lg font-bold text-white leading-tight">{service.title}</h3>
-                      <motion.span
-                        animate={{ rotate: isExpanded ? 45 : 0 }}
-                        transition={{ duration: 0.2 }}
+                      <span
                         className="mt-0.5 shrink-0 text-xl leading-none"
                         style={{ color: accent }}
                       >
-                        +
-                      </motion.span>
+                        →
+                      </span>
                     </div>
 
                     {/* Tagline */}
@@ -143,102 +140,20 @@ export function EcosystemSection({ services, hoveredModule, onHoverModule }: Eco
                       </p>
                     )}
 
-                    {/* Short description always visible */}
+                    {/* Short description */}
                     <p className="text-sm text-silver/60 leading-relaxed">
                       {service.description}
                     </p>
 
-                    {/* Expanded details */}
-                    <AnimatePresence>
-                      {isExpanded && details && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-5 space-y-5">
-                            {/* Full description */}
-                            <p className="text-sm text-silver/70 leading-relaxed border-l-2 pl-4"
-                              style={{ borderColor: `${accent}50` }}>
-                              {details.fullDescription}
-                            </p>
-
-                            {/* Features */}
-                            <div>
-                              <p className="text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">
-                                What&apos;s included
-                              </p>
-                              <ul className="space-y-2">
-                                {details.features.map((f) => (
-                                  <li key={f} className="flex items-start gap-2.5 text-sm text-silver/70">
-                                    <span className="mt-0.5 shrink-0 text-xs" style={{ color: accent }}>✓</span>
-                                    {f}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            {/* All 3 stats */}
-                            <div className="grid grid-cols-3 gap-2">
-                              {details.stats.map((stat) => (
-                                <div
-                                  key={stat.label}
-                                  className="rounded-xl p-3 text-center"
-                                  style={{ background: `${accent}0d`, border: `1px solid ${accent}22` }}
-                                >
-                                  <div className="text-lg font-bold" style={{ color: accent }}>
-                                    {stat.value}
-                                  </div>
-                                  <div className="text-[10px] text-silver/50 leading-tight mt-0.5">
-                                    {stat.label}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-
-                            {/* Use cases */}
-                            <div>
-                              <p className="text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">
-                                Who uses this
-                              </p>
-                              <ul className="space-y-2">
-                                {details.useCases.map((uc) => (
-                                  <li key={uc} className="flex items-start gap-2.5 text-sm text-silver/60">
-                                    <span className="mt-0.5 shrink-0" style={{ color: accent }}>→</span>
-                                    {uc}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            {/* CTA */}
-                            <a
-                              href="#contact"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all"
-                              style={{
-                                background: `${accent}18`,
-                                border: `1px solid ${accent}40`,
-                                color: accent,
-                              }}
-                              onMouseEnter={(e) => {
-                                (e.currentTarget as HTMLAnchorElement).style.background = `${accent}30`;
-                              }}
-                              onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLAnchorElement).style.background = `${accent}18`;
-                              }}
-                            >
-                              Get this for my business
-                              <span>→</span>
-                            </a>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {/* View details hint */}
+                    <p
+                      className="mt-4 text-xs font-medium"
+                      style={{ color: `${accent}70` }}
+                    >
+                      View full details →
+                    </p>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             );
           })}
@@ -251,7 +166,7 @@ export function EcosystemSection({ services, hoveredModule, onHoverModule }: Eco
           viewport={{ once: true }}
           className="text-center text-xs text-silver/30 tracking-wider mt-10"
         >
-          Click any service card to see full details, features &amp; real-world results
+          Click any service card to explore full details, features &amp; real-world results
         </motion.p>
       </div>
     </section>

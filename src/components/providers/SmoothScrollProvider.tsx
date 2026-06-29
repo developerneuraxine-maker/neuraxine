@@ -22,6 +22,10 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    // Always start at the top — prevent browser scroll restoration from jumping mid-page
+    history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

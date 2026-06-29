@@ -143,7 +143,7 @@ export function HeroSection() {
         <p className="mb-4 text-xs tracking-[0.4em] text-neon/80 uppercase">
           Next-Generation AI Automation
         </p>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-white">
           Automate Your Business with{" "}
           <span className="text-neon">Neuraxine AI</span>
         </h1>

@@ -11,15 +11,15 @@ import { MarketingFunnelDemo } from "@/components/demos/MarketingFunnelDemo";
 
 const NXMetalCoin = dynamic(
   () => import("@/components/3d/NXMetalCoin").then((m) => m.NXMetalCoin),
-  { ssr: false, loading: () => <div style={{ height: 280 }} /> }
+  { ssr: false, loading: () => <div style={{ width: 420, height: 420 }} /> }
 );
 
 const DEMOS = [
-  { id: "chatbot", label: "AI Chatbot", component: ChatbotDemo },
-  { id: "voice", label: "Voice Agent", component: VoiceAgentDemo },
-  { id: "leads", label: "Lead Generation", component: LeadGenDemo },
-  { id: "whatsapp", label: "WhatsApp", component: WhatsAppDemo },
-  { id: "funnel", label: "Marketing Funnel", component: MarketingFunnelDemo },
+  { id: "chatbot",   label: "AI Chatbot",        component: ChatbotDemo },
+  { id: "voice",     label: "Voice Agent",        component: VoiceAgentDemo },
+  { id: "leads",     label: "Lead Generation",    component: LeadGenDemo },
+  { id: "whatsapp",  label: "WhatsApp",           component: WhatsAppDemo },
+  { id: "funnel",    label: "Marketing Funnel",   component: MarketingFunnelDemo },
 ];
 
 export function DemoLabSection() {
@@ -27,36 +27,64 @@ export function DemoLabSection() {
   const ActiveDemo = DEMOS.find((d) => d.id === active)?.component || ChatbotDemo;
 
   return (
-    <section id="demos" className="relative min-h-screen pt-8 pb-32 px-6">
-      <div className="relative z-10 mx-auto max-w-7xl">
+    <section id="demos" className="relative">
+
+      {/* ── COIN HERO — fills exactly one viewport height ── */}
+      <div
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{ minHeight: "100vh" }}
+      >
+        {/* Full-screen atmospheric green glow */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: `
+              radial-gradient(ellipse 75% 80% at 50% 50%, rgba(198,255,0,0.18) 0%, rgba(120,180,0,0.09) 38%, rgba(5,5,5,0.88) 68%, transparent 90%),
+              radial-gradient(ellipse 90% 55% at 50% 115%, rgba(30,60,0,0.55) 0%, rgba(5,10,0,0.28) 52%, transparent 76%)
+            `,
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
+
+        {/* NX coin — centered */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <Suspense fallback={<div style={{ width: 420, height: 420 }} />}>
+            <NXMetalCoin size={420} />
+          </Suspense>
+        </div>
+
+        {/* Scroll-down hint */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-8 flex flex-col items-center gap-2"
+          style={{ color: "rgba(255,255,255,0.40)", zIndex: 2 }}
+        >
+          <span className="text-[10px] tracking-[0.3em] uppercase">Scroll to explore demos</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            style={{
+              width: "1px",
+              height: "24px",
+              background: "linear-gradient(to bottom, rgba(198,255,0,0.65), rgba(198,255,0,0.04))",
+            }}
+          />
+        </motion.div>
+      </div>
+
+      {/* ── DEMO CONTENT — below the coin hero ── */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pb-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 pt-16"
         >
-          {/* 3-D metallic NX coin — atmospheric gradient backdrop matching andreigorskikh.digital */}
-          <div className="flex justify-center mb-10" style={{ position: "relative" }}>
-            {/* Wide atmospheric scene gradient: blue-gray sky at top, dark brownish-red at edges/bottom */}
-            <div
-              style={{
-                position: "absolute",
-                inset: "-60px -140px -20px -140px",
-                background: `
-                  radial-gradient(ellipse 70% 85% at 50% 12%, rgba(198,255,0,0.30) 0%, rgba(120,180,0,0.15) 30%, rgba(5,5,5,0.80) 58%, transparent 82%),
-                  radial-gradient(ellipse 85% 55% at 50% 108%, rgba(30,60,0,0.70) 0%, rgba(5,10,0,0.40) 48%, transparent 70%)
-                `,
-                pointerEvents: "none",
-                zIndex: 0,
-              }}
-            />
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <Suspense fallback={<div style={{ height: 280 }} />}>
-                <NXMetalCoin size={280} />
-              </Suspense>
-            </div>
-          </div>
-
           <p className="text-xs tracking-[0.4em] text-neon/80 uppercase mb-4">Live Demo Lab</p>
           <h2 className="text-3xl md:text-5xl font-bold text-white">
             Experience <span className="text-neon">AI In Action</span>
