@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Float, Text, Html } from "@react-three/drei";
+import { Float, Html } from "@react-three/drei";
 import { a, useSpring } from "@react-spring/three";
 import * as THREE from "three";
 
@@ -63,16 +63,11 @@ function ModuleOrb({ mod, isHovered, onHover }: ModuleOrbProps) {
               <sphereGeometry args={[0.35, 16, 16]} />
               <meshBasicMaterial color="#C6FF00" transparent opacity={0.06} />
             </mesh>
-            <Text
-              position={[0, 0.85, 0]}
-              fontSize={0.14}
-              color="#C6FF00"
-              anchorX="center"
-              anchorY="middle"
-              maxWidth={2.2}
-            >
-              {mod.title}
-            </Text>
+            <Html center distanceFactor={8} position={[0, 0.85, 0]}>
+              <div className="text-center text-[11px] font-semibold tracking-wide text-neon mb-1 whitespace-nowrap">
+                {mod.title}
+              </div>
+            </Html>
             <Html center distanceFactor={8} position={[0, -0.9, 0]}>
               <div className="w-40 rounded-lg border border-neon/20 bg-black/80 px-3 py-2 text-[10px] leading-snug text-silver/80 backdrop-blur-md">
                 {mod.description}

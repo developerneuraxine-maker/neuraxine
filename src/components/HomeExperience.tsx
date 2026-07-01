@@ -84,6 +84,31 @@ function ExperienceContent({ services, form, setForm }: ExperienceContentProps) 
         />
       </Suspense>
 
+      {/* CSS large glowing circle — always visible regardless of WebGL shader support */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "min(120vw, 120vh)",
+          height: "min(120vw, 120vh)",
+          borderRadius: "50%",
+          background: [
+            "radial-gradient(ellipse 55% 55% at 50% 50%,",
+            "  rgba(198,255,0,0.28) 0%,",
+            "  rgba(198,255,0,0.16) 22%,",
+            "  rgba(198,255,0,0.07) 45%,",
+            "  rgba(198,255,0,0.02) 65%,",
+            "  transparent 82%)",
+          ].join(""),
+          zIndex: 1,
+          pointerEvents: "none",
+          opacity: Math.max(0, 1 - scrollProgress * 4),
+        }}
+      />
+
       <Navigation />
 
       <main className="relative z-10">
