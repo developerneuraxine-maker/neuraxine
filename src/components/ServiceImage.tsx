@@ -20,7 +20,7 @@ export function ServiceImage({
   className = "",
   priority = false,
 }: ServiceImageProps) {
-  const [source, setSource] = useState<"webp" | "svg" | "emoji">("webp");
+  const [source, setSource] = useState<"svg" | "emoji">("svg");
 
   if (source === "emoji") {
     return (
@@ -30,18 +30,16 @@ export function ServiceImage({
     );
   }
 
-  const src = source === "webp" ? `/services/${slug}.webp` : `/services/${slug}.svg`;
-
   return (
     <Image
-      src={src}
+      src={`/services/${slug}.svg`}
       alt={alt}
       width={size}
       height={size}
       className={`object-contain ${className}`}
-      onError={() => setSource((current) => (current === "webp" ? "svg" : "emoji"))}
+      onError={() => setSource("emoji")}
       priority={priority}
-      unoptimized={source === "svg"}
+      unoptimized
     />
   );
 }

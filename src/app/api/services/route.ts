@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { supabaseAdmin } from "@/lib/supabase";
 import { verifyToken } from "@/lib/auth";
+import { SERVICES } from "@/lib/constants";
 
 const serviceSchema = z.object({
   title: z.string().min(1),
@@ -11,18 +11,29 @@ const serviceSchema = z.object({
   sortOrder: z.number().optional().default(0),
 });
 
+const isSupabaseConfigured =
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+  !process.env.NEXT_PUBLIC_SUPABASE_URL.includes("placeholder");
+
 // GET /api/services
-// Returns services. Public returns only enabled ones. Admin (with all=true) returns all.
+// Returns services from Supabase when configured, otherwise returns static data.
 export async function GET(request: NextRequest) {
   try {
+    if (!isSupabaseConfigured) {
+      const staticServices = SERVICES.map((s, i) => ({
+        ...s,
+        enabled: true,
+        sortOrder: i,
+      }));
+      return NextResponse.json(staticServices);
+    }
+
+    const { supabaseAdmin } = await import("@/lib/supabase");
     const { searchParams } = new URL(request.url);
     const showAll = searchParams.get("all") === "true";
 
     let query = supabaseAdmin.from("services").select("*");
-
-    if (!showAll) {
-      query = query.eq("enabled", true);
-    }
+    if (!showAll) query = query.eq("enabled", true);
 
     const { data: services, error } = await query.order("sortOrder", { ascending: true });
 
@@ -38,10 +49,13 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/services
-// Add a new service (Admin auth required)
+// POST /api/services — Admin auth required, Supabase must be configured
 export async function POST(request: NextRequest) {
   try {
+    if (!isSupabaseConfigured) {
+      return NextResponse.json({ error: "Database not configured" }, { status: 503 });
+    }
+
     const authHeader = request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -54,6 +68,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const data = serviceSchema.parse(body);
 
+    const { supabaseAdmin } = await import("@/lib/supabase");
     const { data: service, error } = await supabaseAdmin
       .from("services")
       .insert({
