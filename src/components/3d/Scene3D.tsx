@@ -1,15 +1,8 @@
 "use client";
 
-import { useRef, Suspense, useState, useEffect, Component, type ReactNode } from "react";
+import { useRef, Suspense, useState, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import * as THREE from "three";
-
-class EffectsErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
-  state = { failed: false };
-  static getDerivedStateFromError() { return { failed: true }; }
-  render() { return this.state.failed ? null : this.props.children; }
-}
 import { ParticleUniverse } from "./ParticleUniverse";
 import { BackgroundSystem } from "./BackgroundSystem";
 import { DataStreams } from "./DataStreams";
@@ -81,7 +74,14 @@ interface Scene3DProps {
   mouse: React.MutableRefObject<{ x: number; y: number }>;
 }
 
-function SceneContent({ services, scrollProgress, hoveredModule, onHoverModule, activeProcessStep, mouse }: Scene3DProps) {
+function SceneContent({
+  services,
+  scrollProgress,
+  hoveredModule,
+  onHoverModule,
+  activeProcessStep,
+  mouse,
+}: Scene3DProps) {
   const heroOpacity = Math.max(0, 1 - scrollProgress * 5);
 
   return (
@@ -114,14 +114,13 @@ export function Scene3D(props: Scene3DProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Check WebGL support
     if (canvasRef.current) {
       try {
-        const gl = canvasRef.current.getContext("webgl2") || canvasRef.current.getContext("webgl");
-        if (!gl) {
-          setWebglError(true);
-        }
-      } catch (e) {
+        const gl =
+          canvasRef.current.getContext("webgl2") ||
+          canvasRef.current.getContext("webgl");
+        if (!gl) setWebglError(true);
+      } catch {
         setWebglError(true);
       }
     }
@@ -137,17 +136,9 @@ export function Scene3D(props: Scene3DProps) {
           width: "100%",
           height: "100%",
           zIndex: 0,
-          background: "linear-gradient(135deg, #050505 0%, #1a1a2e 50%, #050505 100%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          background: "linear-gradient(135deg, #050505 0%, #0a1a0a 50%, #050505 100%)",
         }}
-      >
-        <div style={{ color: "#999", textAlign: "center" }}>
-          <p style={{ fontSize: "18px", marginBottom: "10px" }}>WebGL not available</p>
-          <p style={{ fontSize: "14px", color: "#666" }}>Please enable hardware acceleration or update your browser</p>
-        </div>
-      </div>
+      />
     );
   }
 
@@ -161,24 +152,25 @@ export function Scene3D(props: Scene3DProps) {
         powerPreference: "high-performance",
       }}
       dpr={[1, 1.5]}
-      style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: 0,
+      }}
       onCreated={(state) => {
         try {
           state.gl.info.reset?.();
-        } catch (e) {
-          console.warn("WebGL initialization warning:", e);
+        } catch {
+          // non-critical
         }
       }}
     >
       <color attach="background" args={["#050505"]} />
       <Suspense fallback={null}>
         <SceneContent {...props} />
-        <EffectsErrorBoundary>
-          <EffectComposer>
-            <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} intensity={0.8} />
-            <Vignette eskil={false} offset={0.1} darkness={0.8} />
-          </EffectComposer>
-        </EffectsErrorBoundary>
       </Suspense>
     </Canvas>
   );
