@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, Suspense, useState, useEffect } from "react";
+import { useRef, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { ParticleUniverse } from "./ParticleUniverse";
@@ -110,41 +110,8 @@ function SceneContent({
 }
 
 export function Scene3D(props: Scene3DProps) {
-  const [webglError, setWebglError] = useState(false);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      try {
-        const gl =
-          canvasRef.current.getContext("webgl2") ||
-          canvasRef.current.getContext("webgl");
-        if (!gl) setWebglError(true);
-      } catch {
-        setWebglError(true);
-      }
-    }
-  }, []);
-
-  if (webglError) {
-    return (
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 0,
-          background: "linear-gradient(135deg, #050505 0%, #0a1a0a 50%, #050505 100%)",
-        }}
-      />
-    );
-  }
-
   return (
     <Canvas
-      ref={canvasRef}
       camera={{ position: [0, 0, 6], fov: 60 }}
       gl={{
         antialias: true,
