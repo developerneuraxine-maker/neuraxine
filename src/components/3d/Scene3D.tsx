@@ -2,6 +2,7 @@
 
 import { useRef, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { ParticleUniverse } from "./ParticleUniverse";
 import { BackgroundSystem } from "./BackgroundSystem";
@@ -115,7 +116,6 @@ export function Scene3D(props: Scene3DProps) {
       camera={{ position: [0, 0, 6], fov: 60 }}
       gl={{
         antialias: true,
-        alpha: true,
         powerPreference: "high-performance",
       }}
       dpr={[1, 1.5]}
@@ -127,18 +127,19 @@ export function Scene3D(props: Scene3DProps) {
         height: "100%",
         zIndex: 0,
       }}
-      onCreated={(state) => {
-        try {
-          state.gl.info.reset?.();
-        } catch {
-          // non-critical
-        }
-      }}
     >
       <color attach="background" args={["#050505"]} />
       <Suspense fallback={null}>
         <SceneContent {...props} />
       </Suspense>
+      <EffectComposer>
+        <Bloom
+          luminanceThreshold={0.15}
+          luminanceSmoothing={0.9}
+          intensity={2.5}
+        />
+        <Vignette eskil={false} offset={0.1} darkness={1.1} />
+      </EffectComposer>
     </Canvas>
   );
 }
