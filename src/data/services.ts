@@ -185,6 +185,12 @@ export function getServiceBySlug(slug: string) {
   return SERVICE_CATALOG.find((service) => service.slug === slug) ?? null;
 }
 
+export function getServiceByTitle(title: string) {
+  return SERVICE_CATALOG.find(
+    (service) => service.title.toLowerCase() === title.toLowerCase()
+  ) ?? null;
+}
+
 export function getAllServiceSlugs() {
   return SERVICE_CATALOG.map((service) => service.slug);
 }

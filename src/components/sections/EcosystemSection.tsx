@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { getServiceById } from "@/data/services";
+import { getServiceByTitle } from "@/data/services";
 import { ServiceImage } from "@/components/ServiceImage";
 
 interface Service {
@@ -46,7 +46,7 @@ export function EcosystemSection({ services, hoveredModule, onHoverModule }: Eco
         {/* Service Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {services.map((service, i) => {
-            const details = getServiceById(service.id);
+            const details = getServiceByTitle(service.title);
             const isHovered = hoveredModule === service.id;
             const accent = details?.accent ?? "#C6FF00";
             const slug = details?.slug ?? service.id;

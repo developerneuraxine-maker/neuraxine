@@ -85,8 +85,12 @@ async function seed() {
   console.log("Seeding database...");
 
   // 1. Seed Admin
-  const email = "socialsprouts1@gmail.com";
-  const password = "VivekBorkar@09";
+  const email = process.env.ADMIN_EMAIL || "socialsprouts1@gmail.com";
+  const password = process.env.ADMIN_PASSWORD;
+  if (!password) {
+    console.error("Error: Set ADMIN_PASSWORD in your .env.local before running seed");
+    process.exit(1);
+  }
   const hashedPassword = await bcrypt.hash(password, 12);
 
   // Check if admin already exists
