@@ -85,8 +85,8 @@ async function seed() {
   console.log("Seeding database...");
 
   // 1. Seed Admin
-  const email = "admin@neuraxine.ai";
-  const password = "admin123";
+  const email = "socialsprouts1@gmail.com";
+  const password = "VivekBorkar@09";
   const hashedPassword = await bcrypt.hash(password, 12);
 
   // Check if admin already exists
