@@ -49,6 +49,11 @@ export const metadata: Metadata = {
     description: BRAND.tagline,
     images: ["/og-image.png"],
   },
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
   robots: { index: true, follow: true },
 };
 

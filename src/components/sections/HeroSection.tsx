@@ -40,23 +40,12 @@ export function Navigation() {
         <a href={pathname === "/" ? "#" : "/"} className="group flex items-center gap-2">
           <div style={{ perspective: "600px" }}>
             <motion.div
-              animate={{ rotateY: [0, 360] }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-              className="relative h-10 w-10"
-              style={{ transformStyle: "preserve-3d" }}
+              animate={{ rotateY: [-12, 12] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatType: "reverse" }}
+              className="relative h-10 w-10 rounded-xl overflow-hidden border border-white/10 group-hover:border-neon/40 bg-black"
+              style={{ perspective: "600px" }}
             >
-              <div
-                className="absolute inset-0 rounded-xl overflow-hidden border border-white/10 group-hover:border-neon/40 bg-black"
-                style={{ backfaceVisibility: "hidden" }}
-              >
-                <img src="/logo.jpg" alt="Neuraxine Logo" className="h-full w-full object-cover" />
-              </div>
-              <div
-                className="absolute inset-0 rounded-xl overflow-hidden border border-white/10 group-hover:border-neon/40 bg-black"
-                style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-              >
-                <img src="/logo.jpg" alt="Neuraxine Logo" className="h-full w-full object-cover" style={{ transform: "scaleX(-1)" }} />
-              </div>
+              <img src="/logo.jpg" alt="Neuraxine Logo" className="h-full w-full object-cover" />
             </motion.div>
           </div>
           <span className="text-sm font-semibold tracking-widest text-white group-hover:text-neon transition-colors">
