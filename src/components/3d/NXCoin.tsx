@@ -14,6 +14,7 @@ export function NXCoin({ intensity = 1, spinning = false }: NXCoinProps) {
   const spinRef     = useRef<THREE.Group>(null);
   const backdropRef = useRef<THREE.MeshBasicMaterial>(null);
   const angleRef    = useRef(0);
+  const timer = useRef(new THREE.Timer());
 
   const texture = useTexture("/logo.jpg");
 
@@ -26,8 +27,9 @@ export function NXCoin({ intensity = 1, spinning = false }: NXCoinProps) {
     return t;
   }, [texture]);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (!spinRef.current) return;
+    timer.current.update();
 
     // Smooth backdrop fade-in when spinning starts
     if (backdropRef.current) {
@@ -42,7 +44,7 @@ export function NXCoin({ intensity = 1, spinning = false }: NXCoinProps) {
     if (spinning) {
       angleRef.current += delta * 0.52; // ~12 s per full rotation
       spinRef.current.rotation.y = angleRef.current;
-      spinRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.4) * 0.06;
+      spinRef.current.position.y = Math.sin(timer.current.getElapsed() * 0.4) * 0.06;
     } else {
       spinRef.current.rotation.y = 0;
       spinRef.current.position.y = 0;

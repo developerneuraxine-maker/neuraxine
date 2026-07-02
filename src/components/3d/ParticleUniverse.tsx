@@ -10,6 +10,7 @@ interface ParticleUniverseProps {
 
 export function ParticleUniverse({ count = 2000 }: ParticleUniverseProps) {
   const pointsRef = useRef<THREE.Points>(null);
+  const timer = useRef(new THREE.Timer());
 
   const [positions, velocities] = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -25,11 +26,12 @@ export function ParticleUniverse({ count = 2000 }: ParticleUniverseProps) {
     return [pos, vel];
   }, [count]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!pointsRef.current) return;
+    timer.current.update();
     const geo = pointsRef.current.geometry;
     const posAttr = geo.attributes.position as THREE.BufferAttribute;
-    const t = state.clock.elapsedTime;
+    const t = timer.current.getElapsed();
 
     for (let i = 0; i < count; i++) {
       posAttr.array[i * 3 + 1] += Math.sin(t * 0.5 + i * 0.01) * 0.002;

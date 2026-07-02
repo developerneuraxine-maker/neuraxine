@@ -11,6 +11,7 @@ interface NXLogoCoreProps {
 
 export function NXLogoCore({ intensity = 1 }: NXLogoCoreProps) {
   const groupRef = useRef<THREE.Group>(null);
+  const timer = useRef(new THREE.Timer());
   const texture = useTexture("/logo.jpg");
 
   // Mirrored clone for the back face so the logo reads correctly from both sides
@@ -23,10 +24,11 @@ export function NXLogoCore({ intensity = 1 }: NXLogoCoreProps) {
     return t;
   }, [texture]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!groupRef.current) return;
+    timer.current.update();
     // ~12 seconds per full rotation
-    groupRef.current.rotation.y = state.clock.elapsedTime * 0.52;
+    groupRef.current.rotation.y = timer.current.getElapsed() * 0.52;
   });
 
   const size = 2.4;

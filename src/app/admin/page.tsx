@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface Lead {
@@ -281,7 +282,7 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans">
       {/* Toast notifications */}
-      <div className="fixed top-4 right-4 z-[60] flex flex-col gap-2">
+      <div className="fixed top-4 right-4 z-60 flex flex-col gap-2">
         {successMsg && (
           <div className="bg-[#22c55e]/15 border border-[#22c55e]/30 text-[#22c55e] text-xs px-4 py-3 rounded-lg shadow-lg backdrop-blur-md">
             {successMsg}
@@ -298,7 +299,7 @@ export default function AdminDashboard() {
       <header className="border-b border-white/5 bg-black/40 backdrop-blur-md px-6 py-4 flex items-center justify-between sticky top-0 z-40">
         <div className="flex items-center gap-3">
           <div className="h-8 w-8 rounded-lg overflow-hidden border border-white/10 flex items-center justify-center bg-black">
-            <img src="/logo.jpg" alt="Logo" className="h-full w-full object-cover" />
+            <Image src="/logo.jpg" alt="Logo" width={32} height={32} className="h-full w-full object-cover" />
           </div>
           <div>
             <h1 className="text-sm font-bold text-neon tracking-widest uppercase">Neuraxine Admin</h1>
@@ -374,7 +375,7 @@ export default function AdminDashboard() {
                 </thead>
                 <tbody>
                   {leads.map((lead) => (
-                    <tr key={lead.id} className="border-b border-white/5 hover:bg-white/[0.01] transition-colors">
+                    <tr key={lead.id} className="border-b border-white/5 hover:bg-white/1 transition-colors">
                       <td className="p-4 font-semibold text-white">{lead.name}</td>
                       <td className="p-4 text-silver/70">{lead.phone}</td>
                       <td className="p-4 text-silver/70">{lead.businessName}</td>
@@ -455,7 +456,7 @@ export default function AdminDashboard() {
                       </span>
                     </div>
 
-                    <p className="text-silver/60 text-xs leading-relaxed mb-6 min-h-[48px] line-clamp-3">
+                    <p className="text-silver/60 text-xs leading-relaxed mb-6 min-h-12 line-clamp-3">
                       {service.description}
                     </p>
                   </div>

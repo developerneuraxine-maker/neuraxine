@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Float, Text } from "@react-three/drei";
+import { Float, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { CASE_STUDIES } from "@/lib/constants";
 
@@ -12,12 +12,14 @@ interface CaseStudyOrbsProps {
 
 export function CaseStudyOrbs({ scrollProgress }: CaseStudyOrbsProps) {
   const groupRef = useRef<THREE.Group>(null);
+  const timer = useRef(new THREE.Timer());
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!groupRef.current) return;
+    timer.current.update();
     const visible = scrollProgress > 0.72 && scrollProgress < 0.88;
     groupRef.current.visible = visible;
-    groupRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+    groupRef.current.rotation.y = timer.current.getElapsed() * 0.05;
   });
 
   return (
@@ -43,26 +45,18 @@ export function CaseStudyOrbs({ scrollProgress }: CaseStudyOrbsProps) {
                   opacity={0.85}
                 />
               </mesh>
-              <Text
-                position={[0, 0.15, 0.04]}
-                fontSize={0.18}
-                color="#C6FF00"
-                anchorX="center"
-                anchorY="middle"
-                maxWidth={1}
+              <Html
+                position={[0, 0, 0.04]}
+                center
+                style={{ pointerEvents: "none", textAlign: "center", width: "120px" }}
               >
-                {study.metric}
-              </Text>
-              <Text
-                position={[0, -0.15, 0.04]}
-                fontSize={0.07}
-                color="#C0C0C0"
-                anchorX="center"
-                anchorY="middle"
-                maxWidth={1}
-              >
-                {study.label}
-              </Text>
+                <div style={{ color: "#C6FF00", fontSize: "14px", fontWeight: 600, lineHeight: 1.2 }}>
+                  {study.metric}
+                </div>
+                <div style={{ color: "#C0C0C0", fontSize: "8px", marginTop: "4px", letterSpacing: "0.05em" }}>
+                  {study.label}
+                </div>
+              </Html>
               <pointLight color="#C6FF00" intensity={0.3} distance={3} />
             </group>
           </Float>

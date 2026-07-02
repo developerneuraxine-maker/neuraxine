@@ -24,8 +24,8 @@ const fragmentShader = `
     vec3 neon = vec3(0.776, 1.0, 0.0);
     float fresnel = pow(1.0 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.5);
     float mouseGlow = 1.0 + uMouse.x * 0.3 + uMouse.y * 0.2;
-    vec3 color = neon * fresnel * mouseGlow * uIntensity;
-    float alpha = fresnel * 0.6 * uIntensity;
+    vec3 color = neon * fresnel * mouseGlow * uIntensity * 0.35;
+    float alpha = fresnel * 0.3 * uIntensity;
     gl_FragColor = vec4(color, alpha);
   }
 `;
@@ -37,6 +37,7 @@ interface AICoreShaderProps {
 
 export function AICoreShader({ mouse, intensity = 1 }: AICoreShaderProps) {
   const meshRef = useRef<THREE.Mesh>(null);
+  const timer = useRef(new THREE.Timer());
 
   const uniforms = useMemo(
     () => ({
@@ -46,12 +47,13 @@ export function AICoreShader({ mouse, intensity = 1 }: AICoreShaderProps) {
     [intensity]
   );
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!meshRef.current) return;
+    timer.current.update();
     const mat = meshRef.current.material as THREE.ShaderMaterial;
     mat.uniforms.uIntensity.value = intensity;
     mat.uniforms.uMouse.value.set(mouse.current.x, mouse.current.y);
-    meshRef.current.rotation.y = state.clock.elapsedTime * 0.1;
+    meshRef.current.rotation.y = timer.current.getElapsed() * 0.1;
   });
 
   return (

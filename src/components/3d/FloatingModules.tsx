@@ -83,6 +83,7 @@ function ModuleOrb({ mod, isHovered, onHover }: ModuleOrbProps) {
 
 export function FloatingModules({ services, scrollProgress, hoveredModule, onHover }: FloatingModulesProps) {
   const groupRef = useRef<THREE.Group>(null);
+  const timer = useRef(new THREE.Timer());
 
   const modules = useMemo(() => {
     if (!services || services.length === 0) return [];
@@ -98,9 +99,10 @@ export function FloatingModules({ services, scrollProgress, hoveredModule, onHov
     });
   }, [services]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!groupRef.current) return;
-    const t = state.clock.elapsedTime;
+    timer.current.update();
+    const t = timer.current.getElapsed();
     groupRef.current.rotation.y = t * 0.08;
     const visible = scrollProgress > 0.15 && scrollProgress < 0.45;
     groupRef.current.visible = visible;

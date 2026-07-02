@@ -11,7 +11,6 @@ import { NeuralNetwork } from "./NeuralNetwork";
 import { AICoreShader } from "./AICoreShader";
 import { FloatingModules } from "./FloatingModules";
 import { ProcessPathway } from "./ProcessPathway";
-import { CaseStudyOrbs } from "./CaseStudyOrbs";
 
 interface CameraControllerProps {
   scrollProgress: number;
@@ -103,7 +102,6 @@ function SceneContent({
         onHover={onHoverModule}
       />
       <ProcessPathway scrollProgress={scrollProgress} activeStep={activeProcessStep} />
-      <CaseStudyOrbs scrollProgress={scrollProgress} />
 
       <CameraController scrollProgress={scrollProgress} mouse={mouse} />
     </>
@@ -132,11 +130,11 @@ export function Scene3D(props: Scene3DProps) {
       <Suspense fallback={null}>
         <SceneContent {...props} />
       </Suspense>
-      <EffectComposer>
+      <EffectComposer multisampling={0}>
         <Bloom
           luminanceThreshold={0.15}
           luminanceSmoothing={0.9}
-          intensity={2.5}
+          intensity={1.0}
         />
         <Vignette eskil={false} offset={0.1} darkness={1.1} />
       </EffectComposer>

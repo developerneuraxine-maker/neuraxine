@@ -7,6 +7,7 @@ import * as THREE from "three";
 export function BackgroundSystem() {
   const shapesRef = useRef<THREE.Group>(null);
   const beamsRef = useRef<THREE.Group>(null);
+  const timer = useRef(new THREE.Timer());
 
   const shapes = useMemo(() => {
     return Array.from({ length: 12 }, (_, i) => ({
@@ -21,8 +22,9 @@ export function BackgroundSystem() {
     }));
   }, []);
 
-  useFrame((state) => {
-    const t = state.clock.elapsedTime;
+  useFrame(() => {
+    timer.current.update();
+    const t = timer.current.getElapsed();
     if (shapesRef.current) {
       shapesRef.current.rotation.y = t * 0.01;
       shapesRef.current.children.forEach((child, i) => {

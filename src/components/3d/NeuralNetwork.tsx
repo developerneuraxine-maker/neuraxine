@@ -13,6 +13,7 @@ interface NeuralNetworkProps {
 
 export function NeuralNetwork({ mouse, intensity = 1 }: NeuralNetworkProps) {
   const groupRef = useRef<THREE.Group>(null);
+  const timer = useRef(new THREE.Timer());
   const nodeCount = 80;
   const connectionCount = 120;
 
@@ -64,9 +65,10 @@ export function NeuralNetwork({ mouse, intensity = 1 }: NeuralNetworkProps) {
     return arr;
   }, [nodes]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!groupRef.current) return;
-    const t = state.clock.elapsedTime;
+    timer.current.update();
+    const t = timer.current.getElapsed();
     groupRef.current.rotation.y = t * 0.15 + mouse.current.x * 0.3;
     groupRef.current.rotation.x = mouse.current.y * 0.2;
   });

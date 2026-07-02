@@ -9,6 +9,7 @@ const NEON = new THREE.Color("#C6FF00");
 function LoaderCore() {
   const groupRef = useRef<THREE.Group>(null);
   const pulseRef = useRef<THREE.Mesh>(null);
+  const timer = useRef(new THREE.Timer());
 
   const nodes = useMemo(() => {
     return Array.from({ length: 24 }, (_, i) => {
@@ -35,8 +36,9 @@ function LoaderCore() {
     return geo;
   }, [nodes]);
 
-  useFrame((state) => {
-    const t = state.clock.elapsedTime;
+  useFrame(() => {
+    timer.current.update();
+    const t = timer.current.getElapsed();
     if (groupRef.current) {
       groupRef.current.rotation.y = t * 0.35;
       groupRef.current.rotation.x = Math.sin(t * 0.5) * 0.15;

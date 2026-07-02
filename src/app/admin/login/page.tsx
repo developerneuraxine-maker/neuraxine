@@ -44,7 +44,7 @@ export default function AdminLoginPage() {
           <h1 className="text-2xl font-bold text-neon tracking-widest">NEURAXINE</h1>
           <p className="text-sm text-silver/50 mt-2">Admin Command Center</p>
         </div>
-        <form onSubmit={submit} className="space-y-4 p-8 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl">
+        <form onSubmit={submit} className="space-y-4 p-8 rounded-2xl border border-white/10 bg-white/3 backdrop-blur-xl">
           <input
             type="email"
             value={email}

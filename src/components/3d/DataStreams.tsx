@@ -6,6 +6,7 @@ import * as THREE from "three";
 
 export function DataStreams() {
   const groupRef = useRef<THREE.Group>(null);
+  const timer = useRef(new THREE.Timer());
 
   const streams = useMemo(() => {
     return Array.from({ length: 8 }, (_, i) => ({
@@ -17,9 +18,10 @@ export function DataStreams() {
     }));
   }, []);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!groupRef.current) return;
-    const t = state.clock.elapsedTime;
+    timer.current.update();
+    const t = timer.current.getElapsed();
     groupRef.current.children.forEach((child, i) => {
       const stream = streams[i];
       child.position.y = ((t * stream.speed + stream.offset) % stream.height) - stream.height / 2;
